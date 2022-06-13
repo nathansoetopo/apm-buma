@@ -11429,7 +11429,10 @@ html {
   font-size: 1.5rem;
   color: #6c757d;
 }
-
+.riwayat{
+  margin-top: calc(6rem + 50px);
+  padding-bottom: 6rem; 
+}
 .masthead {
   padding-top: calc(6rem + 74px);
   padding-bottom: 6rem;
@@ -11509,4 +11512,11 @@ html {
   background-image: url('/startboot/cr.png');
   background-repeat: no-repeat;
   background-size: cover;
+}
+/* Table */
+.indikator{
+  background-color: #33FF00;
+  padding: 10px;
+  width: 70%;
+  border-radius: 15px;
 }

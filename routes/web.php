@@ -20,4 +20,7 @@ Route::get('/', function () {
 Route::get('/apm', function () {
     return view('apm');
 });
+Route::get('/riwayat', function () {
+    return view('riwayat');
+});
 Route::post('uji-coba', [AjaxController::class, 'getValue']);
