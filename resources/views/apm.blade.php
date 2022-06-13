@@ -79,7 +79,7 @@
         }
 
         function responUser() {
-            timerVariable = setInterval(dumyCount, 10);
+            timerVariable = setInterval(dumyCount, 0);
             function dumyCount() {
                 ++total;
             }
