@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <!-- CSS Libraries -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <style>
+        #button{
+            height: 100vh;
+            width: 100%;
+            background-color: red;
+        }
+    </style>
 </head>
 
 <body>
-
-    <h2>Uji Coba Timing</h2>
-
-    <p>Sistem APM.</p>
-
-    <h2>Respond User</h2>
-    <div id="count_up_timer">00</div>
-    <br><br>
-    <button id="button" onclick="spwanerData()">Click</button>
+    <button id="button" onclick="spwanerData()">Click Me</button>
     <script>
+        showButton();
         var click = 0;
         var total = 0;
         const nilai = [];
         var timer;
         var timerVariable;
-
         function spwanerData() {
             click += 1;
             if (click <= 5) {
@@ -59,7 +57,7 @@
                         traditional: true,
                         success:function(response)
                         {
-                        console.log(response);
+                            console.log(response);
                         }
                     })
                 }
@@ -68,15 +66,15 @@
 
         function myFunction() {
             if (click <= 5) {
-                document.getElementById("button").style.visibility = "visible";
+                showButton()
                 if (click == 5) {
                     responUser()
                 }
             } else if (click >= 6 && click <= 15) {
-                document.getElementById("button").style.visibility = "visible";
+                showButton()
                 responUser()
             } else {
-                document.getElementById("button").style.visibility = "visible";
+                showButton()
             }
         }
 
@@ -84,8 +82,14 @@
             timerVariable = setInterval(dumyCount, 10);
             function dumyCount() {
                 ++total;
-                document.getElementById("count_up_timer").innerHTML = total;
             }
+        }
+
+        function showButton(){
+            var color = Math.floor(Math.random() * 16777216).toString(16);
+            var color_now = '#000000'.slice(0, -color.length) + color;
+            document.getElementById("button").style.visibility = "visible";
+            document.getElementById("button").style.background = color_now;
         }
     </script>
 </body>

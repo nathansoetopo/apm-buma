@@ -107,12 +107,6 @@
                         <img class="rounded mb-5" src="{{ asset('startboot/logobuma.png') }}"
                             alt="..." />
                     </div>
-                    {{-- <h4 class="text-uppercase mb-4">Hubungi Kami</h4>
-                        <p class="lead mb-0">
-                            2215 John Daniel Drive
-                            <br />
-                            Clark, MO 65243
-                        </p> --}}
                 </div>
                 <!-- Footer Social Icons-->
                 <div class="col-lg-5 mb-5 mb-lg-0">
