@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\KepalaController;
+use App\Http\Controllers\PegawaiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +17,9 @@ use App\Http\Controllers\AjaxController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/',[PegawaiController::class,'index']);
+Route::get('/admin',[AdminController::class,'index']);
+Route::get('/kepala',[KepalaController::class,'index']);
 Route::get('/apm', function () {
     return view('apm');
 });
