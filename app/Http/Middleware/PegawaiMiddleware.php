@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PegawaiMiddleware
 {
@@ -16,6 +17,21 @@ class PegawaiMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if(Auth::check())
+        {
+            if(request()->user()->hasRole('pegawai'))
+            {
+                return $next($request);
+            }
+            elseif(request()->user()->hasRole('kepala'))
+            {
+                return redirect('kepala')->with('status','Anda bukan pegawai');
+            }
+            elseif(request()->user()->hasRole('admin'))
+            {
+                return redirect('admin')->with('status','Anda bukan pegawai');
+            }
+        }
+        return redirect('/')->with('status','Anda belum login');
     }
 }

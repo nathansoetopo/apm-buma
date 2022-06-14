@@ -17,7 +17,7 @@ class QuizSeeder extends Seeder
         collect([
             [
                 'name' => 'Latihan HTML',
-                'time' => '00:30:00',
+                // 'time' => '00:30:00',
                 'created_at' => now(),
                 'start_date' => now()->addDays(2),
                 'end_date' => now()->addDays(5),
@@ -25,7 +25,7 @@ class QuizSeeder extends Seeder
             ],
             [
                 'name' => 'Latihan Javascript',
-                'time' => '00:40:00',
+                // 'time' => '00:40:00',
                 'created_at' => now()->addDays(1),
                 'start_date' => now()->addDays(3),
                 'end_date' => now()->addDays(5),
@@ -33,7 +33,7 @@ class QuizSeeder extends Seeder
             ],
             [
                 'name' => 'Latihan VueJS',
-                'time' => '00:20:00',
+                // 'time' => '00:20:00',
                 'created_at' => now()->addDays(1),
                 'start_date' => now()->addDays(2),
                 'end_date' => now()->addDays(5),
@@ -41,21 +41,21 @@ class QuizSeeder extends Seeder
             ],
             [
                 'name' => 'Latihan ReactJS',
-                'time' => '00:30:00',
+                // 'time' => '00:30:00',
                 'created_at' => now(),
                 'start_date' => now(),
                 'end_date' => now()->addDays(5),
             ],
             [
                 'name' => 'Latihan Laravel',
-                'time' => '00:30:00',
+                // 'time' => '00:30:00',
                 'created_at' => now(),
                 'start_date' => now(),
                 'end_date' => now()->addDays(5),
             ],
             [
                 'name' => 'Latihan CodeIgniter',
-                'time' => '00:30:00',
+                // 'time' => '00:30:00',
                 'created_at' => now(),
                 'start_date' => now(),
                 'end_date' => now()->addDays(5),

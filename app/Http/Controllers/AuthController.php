@@ -42,11 +42,17 @@ class AuthController extends Controller
                 if($user->hasRole('pegawai'))
                 {
                     Auth::login($user);
-                    return redirect('/pegawai');
+                    return redirect('/');
                 }
             }
             return redirect('login')->with('status','Password anda salah');
         }
         return redirect('login')->with('status','Email tidak ditemukan');
+    }
+
+    public function logout()
+    {
+        Auth::logout(request()->user());
+        return redirect('/');
     }
 }

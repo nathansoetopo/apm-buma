@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('quiz_id')->constrained('quizzes')->onUpdate('cascade')->onDelete('cascade');
             $table->float('grade');
             $table->timestamp('start_time')->nullable();
-            $table->time('time_remaining')->nullable();
+            // $table->time('time_remaining')->nullable();
             $table->enum('status', ['Unfinished','Finished', 'Ongoing', 'Late'])->nullable();
             $table->timestamps();
         });
