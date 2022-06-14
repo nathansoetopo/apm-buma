@@ -62,4 +62,3 @@ Route::middleware('auth')->group(function(){
         Route::post('uji-coba', [AjaxController::class, 'getValue']);
     });
 });
-

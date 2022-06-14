@@ -34,12 +34,9 @@
             </div>
         </nav>
         <!-- Masthead-->
-
-        <img class="masthead" src="{{ asset('startboot/assets/nilaibg.png') }}" style="position: absolute; width:129%; padding-top:30px"/>
-        <header class="masthead text-white text-center" style="background-image: url('../startboot/assets/hal1.png'); z-index:1;">
-            <div class="container d-flex align-items-center flex-column">
-                <!-- Masthead Avatar Image-->
-                <img class="masthead-avatar mb-5" alt="..." />
+        <header class="container masthead text-white text-center" style="background-image: url('../startboot/assets/hal1.png'); z-index:1;">
+            <img src="{{ asset('startboot/assets/nilaibg.png') }}" style="width:100%; height: auto; max-height:700px; min-height:500px;"/>
+            <div class="container d-flex align-items-center flex-column" style="position:absolute; top:200px;">
                 <!-- Masthead Heading-->
                 <h1 class="masthead-heading text-uppercase mb-0">Start Bootstrap</h1>
                 <!-- Icon Divider-->
