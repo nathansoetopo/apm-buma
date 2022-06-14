@@ -38,14 +38,14 @@
                     </div>
                     @endif
                     <div class="section-header">
-                        <h1>Index Quiz</h1>
+                        <h1>Quiz Question</h1>
                     </div>
 
                     <div class="section-body">
                         <!-- This is where your code starts -->
                         <div class="card-body p-0">
                             <a class="btn btn-primary" href="#" data-toggle="modal"
-                                data-target="#modalAddData">Create Quiz</a></br></br>
+                                data-target="#modalAddData">Create Question</a></br></br>
                             <div class="table-responsive">
                                 <table class="table table-striped" id="table-1">
                                     <thead>
@@ -53,44 +53,28 @@
                                             <th class="text-center">
                                                 #
                                             </th>
-                                            <th>Name</th>
-                                            <th>Start Date</th>
-                                            <th>End Date</th>
-                                            <th>Status</th>
+                                            <th>Questions</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($quizzes as $key => $quiz)
+                                    @foreach ($questions as $key => $q)
                                         <tr>
                                             <td class="text-center">
                                                 {{ $key+1 }}
                                             </td>
                                             <td>
-                                                {{ $quiz->name }}
-                                            </td>
-                                            <td>
-                                                {{ $quiz->start_date }}
-                                            </td>
-                                            <td>
-                                                {{ $quiz->end_date }}
-                                            </td>
-                                            <td>
-                                                {{ $quiz->status }}
+                                                {{ $q->question }}
                                             </td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a href="{{ url('admin/quiz/'.$quiz->id.'/questions') }}" class="btn btn-primary">Detail</a>
+                                                    <a href="#" class="btn btn-info">Answers</a>
                                                     <a href="#" data-toggle="modal"
-                                                        data-target="#modalUpdateStatus{{ $quiz->id }}">
-                                                        <button type="button" class="btn btn-info">Status</button>
-                                                    </a>
-                                                    <a href="#" data-toggle="modal"
-                                                        data-target="#modalUpdateData{{ $quiz->id }}">
+                                                        data-target="#modalUpdateData{{ $q->id }}">
                                                         <button type="button" class="btn btn-warning">Edit</button>
                                                     </a>
                                                     <a href="#" data-toggle="modal"
-                                                        data-target="#modalDeleteData{{ $quiz->id }}">
+                                                        data-target="#modalDeleteData{{ $q->id }}">
                                                         <button type="button" class="btn btn-danger">Delete</button>
                                                     </a>
                                                 </div>
@@ -109,10 +93,9 @@
             </footer>
         </div>
     </div>
-    @include('admin.modal.create-quiz')
-    @include('admin.modal.update-quiz')
-    @include('admin.modal.delete-quiz')
-    @include('admin.modal.update-quiz-status')
+    @include('admin.modal.create-question')
+    @include('admin.modal.update-question')
+    @include('admin.modal.delete-question')
     @include('stisla.script')
 </body>
 

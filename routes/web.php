@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AjaxController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KepalaController;
 use App\Http\Controllers\PegawaiController;
 
@@ -25,6 +26,14 @@ Route::middleware('auth')->group(function(){
         Route::prefix('admin')->group(function(){
             Route::get('/',[AdminController::class,'index']);
             Route::get('/quiz',[AdminController::class,'indexQuiz']);
+            Route::post('/quiz',[QuizController::class,'storeQuiz']);
+            Route::post('/quiz/{quizID}/update',[QuizController::class,'updateQuiz']);
+            Route::get('/quiz/{quizID}/delete',[QuizController::class,'deleteQuiz']);
+            Route::get('/quiz/{quizID}/update-status',[QuizController::class,'updateQuizStatus']);
+            Route::get('/quiz/{quizID}/questions',[QuizController::class,'quizQuestions']);
+            Route::post('/quiz/{quizID}/store-question',[QuizController::class,'storeQuestion']);
+            Route::post('/quiz/{questionID}/update-question',[QuizController::class,'updateQuestion']);
+            Route::get('/quiz/{questionID}/delete-question',[QuizController::class,'deleteQuestion']);
         });
     });
     Route::middleware('is.kepala')->group(function(){
