@@ -34,6 +34,10 @@ Route::middleware('auth')->group(function(){
             Route::post('/quiz/{quizID}/store-question',[QuizController::class,'storeQuestion']);
             Route::post('/quiz/{questionID}/update-question',[QuizController::class,'updateQuestion']);
             Route::get('/quiz/{questionID}/delete-question',[QuizController::class,'deleteQuestion']);
+            Route::get('/quiz/{questionID}/options',[QuizController::class,'questionOptions']);
+            Route::post('/quiz/{questionID}/store-option',[QuizController::class,'storeOption']);
+            Route::post('/quiz/{optionID}/update-option',[QuizController::class,'updateOption']);
+            Route::get('/quiz/{optionID}/delete-option',[QuizController::class,'deleteOption']);
         });
     });
     Route::middleware('is.kepala')->group(function(){

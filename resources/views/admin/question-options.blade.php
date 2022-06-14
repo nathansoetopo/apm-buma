@@ -38,14 +38,14 @@
                     </div>
                     @endif
                     <div class="section-header">
-                        <h1>Question Answer</h1>
+                        <h1>Question Options</h1>
                     </div>
 
                     <div class="section-body">
                         <!-- This is where your code starts -->
                         <div class="card-body p-0">
                             <a class="btn btn-primary" href="#" data-toggle="modal"
-                                data-target="#modalAddData">Create Answer</a></br></br>
+                                data-target="#modalAddData">Create Option</a></br></br>
                             <div class="table-responsive">
                                 <table class="table table-striped" id="table-1">
                                     <thead>
@@ -59,25 +59,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($answers as $key => $a)
+                                    @foreach ($options as $key => $o)
                                         <tr>
                                             <td class="text-center">
                                                 {{ $key+1 }}
                                             </td>
                                             <td>
-                                                {{ $a->option }}
+                                                {{ $o->option }}
                                             </td>
                                             <td>
-                                                {{ $a->status }}
+                                                {{ $o->status }}
                                             </td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
                                                     <a href="#" data-toggle="modal"
-                                                        data-target="#modalUpdateData{{ $a->id }}">
+                                                        data-target="#modalUpdateData{{ $o->id }}">
                                                         <button type="button" class="btn btn-warning">Edit</button>
                                                     </a>
                                                     <a href="#" data-toggle="modal"
-                                                        data-target="#modalDeleteData{{ $a->id }}">
+                                                        data-target="#modalDeleteData{{ $o->id }}">
                                                         <button type="button" class="btn btn-danger">Delete</button>
                                                     </a>
                                                 </div>
@@ -96,6 +96,9 @@
             </footer>
         </div>
     </div>
+    @include('admin.modal.create-option')
+    @include('admin.modal.update-option')
+    @include('admin.modal.delete-option')
     @include('stisla.script')
 </body>
 

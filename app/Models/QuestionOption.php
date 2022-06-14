@@ -18,4 +18,9 @@ class QuestionOption extends Model
         return $this->belongsToMany(User::class, 'question_option_users', 'option_id', 'user_id')->withPivot('status', 'question_id')->withTimestamps();
     }
 
+    public function quiz_questions()
+    {
+        return $this->belongsTo(QuizQuestion::class,'quiz_question_id');
+    }
+
 }

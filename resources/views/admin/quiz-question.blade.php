@@ -68,7 +68,7 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a href="#" class="btn btn-info">Answers</a>
+                                                    <a href="{{ url('/admin/quiz/'.$q->id.'/options') }}" class="btn btn-info">Options</a>
                                                     <a href="#" data-toggle="modal"
                                                         data-target="#modalUpdateData{{ $q->id }}">
                                                         <button type="button" class="btn btn-warning">Edit</button>

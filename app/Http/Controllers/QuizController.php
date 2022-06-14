@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\QuestionOption;
 use App\Models\Quiz;
 use App\Models\QuizQuestion;
 use Illuminate\Http\Request;
@@ -135,5 +136,88 @@ class QuizController extends Controller
         }
         QuizQuestion::destroy($questionID);
         return redirect()->back()->with('status','Data question berhasil dihapus');
+    }
+
+    public function questionOptions($questionID)
+    {
+        $question = QuizQuestion::find($questionID);
+        if(!$question)
+        {
+            return redirect()->back()->with('status','Data question tidak ditemukan');
+        }
+        $options = QuestionOption::where('quiz_question_id',$questionID)->get();
+        return view('admin.question-options',compact('options','questionID'));
+    }
+
+    public function storeOption($questionID)
+    {
+        $question = QuizQuestion::find($questionID);
+        if(!$question)
+        {
+            return redirect()->back()->with('status','Data question tidak ditemukan');
+        }
+        if(QuestionOption::where('quiz_question_id',$questionID)->count() > 3)
+        {
+            return redirect()->back()->with('status','Data options sudah terpenuhi');
+        }
+        if(request('status') > 4)
+        {
+            return redirect()->back()->with('status','Data status melebihi batas');
+        }
+        if(QuestionOption::where('quiz_question_id',$questionID)->where('status',request('status'))->exists())
+        {
+            return redirect()->back()->with('status','Data status options sudah ada');
+        }
+        $validator = Validator::make(request()->all(),[
+            'option' => 'required|string',
+            'status' => 'required|integer',
+        ]);
+        if($validator->fails())
+        {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+        QuestionOption::create([
+            'option' => request('option'),
+            'status' => request('status'),
+            'quiz_question_id' => $questionID,
+        ]);
+        return redirect()->back()->with('status','Data options berhasil ditambahkan');
+    }
+
+    public function updateOption($optionID)
+    {
+        $option = QuestionOption::find($optionID);
+        if(!$option)
+        {
+            return redirect()->back()->with('status','Data option tidak ditemukan');
+        }
+        if(QuestionOption::where('quiz_question_id',request('questionID'))->where('status',request('status'))->exists())
+        {
+            return redirect()->back()->with('status','Data status options sudah ada');
+        }
+        $validator = Validator::make(request()->all(),[
+            'option' => 'required|string',
+            // 'status' => 'required|integer',
+        ]);
+        if($validator->fails())
+        {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+        $option->update([
+            'option' => request('option'),
+            // 'status' => request('status'),
+        ]);
+        return redirect()->back()->with('status','Data options berhasil diupdate');
+    }
+
+    public function deleteOption($optionID)
+    {
+        $option = QuestionOption::find($optionID);
+        if(!$option)
+        {
+            return redirect()->back()->with('status','Data option tidak ditemukan');
+        }
+        QuestionOption::destroy($optionID);
+        return redirect()->back()->with('status','Data options berhasil dihapus');
     }
 }
