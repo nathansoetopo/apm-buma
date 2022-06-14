@@ -108,29 +108,31 @@ input:focus ~ .highlight {
   to 	{ width:0; background:transparent; }
 }
 .footer-bg2 {
-      position: absolute;
-      width: 100%;
-      height: 90px;
-      background-color: #0E9C4A;
-      z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    background-color: #0E9C4A;
+    z-index: -1;
  }
 @media only screen and (max-width: 600px) {
   .footer-bg2 {
-margin-top: 250px;
-bottom: 0;
+  margin-top: 250px;
+  bottom: 0;
   }
 }
 .section {
   position: relative;
   z-index: 1;
-  background-image: url("../assets/img/loginbg.png"); }
+  margin-top: 100px;
+  width: 100%;
+  height:auto;
+}
 @media only screen and (max-width: 600px) {
   .section {
     background-image: none;
   }
 }
-.navbar-bg {
-  content: ' ';
+  .navbar-bg {
   position: absolute;
   width: 100%;
   height: 80px;
@@ -139,78 +141,68 @@ bottom: 0;
 
   .navbar-bg2 {
     position: absolute;
+    top: 0px;
     width: 100%;
     height: 90px;
     background-color: #0E9C4A;
     z-index: -1; }
 
     .footer-bg2 {
-      position: absolute;
-      width: 100%;
-      height: 90px;
-      background-color: #0E9C4A;
-      z-index: -1; }
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 90px;
+    background-color: #0E9C4A;
+    z-index: -1; }
 </style>
+<body class="bg-success">
   <div class="navbar-bg2" style="background-image: url(../startboot/assets/headerbg.png);"></div>
-</br> </br>
-</br> </br>
-
-
-
-<body>
-  <div id="app" >
     <section class="section" style="padding-top: 10px; background-image: url(../startboot/login-bg.png);">
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-8" style="padding-top: 5%;">
-            <div class="card card" style="border-radius: 47px;">
-            <center>
-              <div class="card-header justify-content-center" style="background-color: transparent;"><h2 style="color: #0E9C4A;">MASUK</h2></div>
-            </center>
-              <div class="card-body">
-                <form method="POST" action="#" class="needs-validation" novalidate="">
-                  <div class="group">
-                    <input type="text" required>
-                    <span class="highlight"></span>
-                    <span class="bar"></span>
-                    <label style="color: #0E9C4A;">Email</label>
-                  </div>
-
-                  <div class="group">
-                    <input type="text" required>
-                    <span class="highlight"></span>
-                    <span class="bar"></span>
-                    <label style="color: #0E9C4A;">Password</label>
-                  </div>
-
-                  <div class="group">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
-                      <label style="color: #0E9C4A;" class="custom-control-label" for="remember-me">Remember Me</label>
+        <div class="container mt-5">
+          <div class="row">
+            <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-8" style="padding-top: 5%;">
+              <div class="card card" style="border-radius: 47px;">
+              <center>
+                <div class="card-header justify-content-center" style="background-color: transparent;"><h2 style="color: #0E9C4A;">MASUK</h2></div>
+              </center>
+                <div class="card-body">
+                  <form method="POST" action="#" class="needs-validation" novalidate="">
+                    <div class="group">
+                      <input type="text" required>
+                      <span class="highlight"></span>
+                      <span class="bar"></span>
+                      <label style="color: #0E9C4A;">Email</label>
                     </div>
-                  </div>
-
-                  <div class="form-group">
-                    <center>
-                    <button type="submit" class="btn btn btn-lg btn-block" style="background-color: #0E9C4A; color: white; width: 60%; border-radius: 15px;" >
-                      Login
-                    </button>
-                  </center>
-                  </div>
-                </form>
+                    <div class="group">
+                      <input type="text" required>
+                      <span class="highlight"></span>
+                      <span class="bar"></span>
+                      <label style="color: #0E9C4A;">Password</label>
+                    </div>
+                    <div class="group">
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
+                        <label style="color: #0E9C4A;" class="custom-control-label" for="remember-me">Remember Me</label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <center>
+                      <button type="submit" class="btn btn btn-lg btn-block" style="background-color: #0E9C4A; color: white; width: 60%; border-radius: 15px;" >
+                        Login
+                      </button>
+                    </center>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
-          </br>
-        </br></br>
           </div>
         </div>
       </div>
-
     </section>
-    <footer>
-      <div class="footer-bg2" style="background-image: url(../startboot/assets/headerbg.png); margin-top: 0px;"></div>
-    </footer>
-  </div>
+  <footer>
+    <div class="footer-bg2" style="background-image: url(../startboot/assets/headerbg.png); margin-bottom: 0px;"></div>
+  </footer>
   <!-- General JS Scripts -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

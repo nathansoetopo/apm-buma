@@ -11447,11 +11447,18 @@ html {
 .masthead .masthead-avatar {
   width: 15rem;
 }
-
+@media (max-width: 920px) {
+  .masthead {
+    padding: 0px;
+    margin-top: 50px;
+  }
+}
 @media (min-width: 992px) {
   .masthead {
-    padding-top: calc(6rem + 104px);
-    padding-bottom: 6rem;
+    margin-top: 100px;
+    /* padding-top: calc(6rem + 104px);
+    padding-bottom: 6rem; */
+    padding: 0px;
   }
   .masthead .masthead-heading {
     font-size: 4rem;

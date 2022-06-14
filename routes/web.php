@@ -32,4 +32,7 @@ Route::get('/form', function () {
 Route::get('/login', function () {
     return view('login');
 });
+Route::get('/login2', function () {
+    return view('auth-login-2');
+});
 Route::post('uji-coba', [AjaxController::class, 'getValue']);
