@@ -48,33 +48,31 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">Senin, 20 Januari 2022</th>
-                    <td>215,2 milidetik</td>
-                    <td>
-                        <center>
-                            <div class="container indikator"><b>N</b></div>
-                        </center>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Senin, 20 Januari 2022</th>
-                    <td>415,2 milidetik</td>
-                    <td>
-                        <center>
-                            <div class="container indikator bg-warning"><b>KKR</b></div>
-                        </center>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Senin, 20 Januari 2022</th>
-                    <td>815,2 milidetik</td>
-                    <td>
-                        <center>
-                            <div class="container indikator bg-danger"><b>KKB</b></div>
-                        </center>
-                    </td>
-                </tr>
+                @foreach ($user as $u)
+                    <tr>
+                        <th scope="row">{{$u->created_at}}</th>
+                        <td>{{$u->pivot->grade}}</td>
+                        <td>
+                            @if($u->pivot->grade >= 580)
+                                <center>
+                                    <div class="container bg-danger"><b>N</b></div>
+                                </center>
+                            @elseif($u->pivot->grade < 580 && $u->pivot->grade >= 410)
+                                <center>
+                                    <div class="container" style="background-color:#F9690E;"><b>N</b></div>
+                                </center>
+                            @elseif(240 <= $u->pivot->grade && $u->pivot->grade < 410)
+                                <center>
+                                    <div class="container bg-warning"><b>N</b></div>
+                                </center>
+                            @elseif($u->pivot->grade <= 150)
+                                <center>
+                                    <div class="container bg-success"><b>N</b></div>
+                                </center>
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
         <center>

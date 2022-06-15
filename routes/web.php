@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function(){
         Route::get('/riwayat', function () {
             return view('riwayat');
         });
+        Route::get('/riwayat-test', [PegawaiController::class, 'riwayatTest']);
         Route::get('/hasil', function () {
             return view('hasil');
         });
