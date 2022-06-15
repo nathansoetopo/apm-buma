@@ -19,6 +19,6 @@ class Quiz extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'quiz_users', 'quiz_id', 'user_id')->withPivot(['grade', 'start_time', 'time_remaining', 'status'])->withTimestamps();
+        return $this->belongsToMany(User::class, 'quiz_users', 'quiz_id', 'user_id')->withPivot(['grade', 'start_time', 'status'])->withTimestamps();
     }
 }

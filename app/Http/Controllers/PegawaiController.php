@@ -6,6 +6,7 @@ use App\Models\QuestionOption;
 use App\Models\Quiz;
 use App\Models\QuizQuestion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PegawaiController extends Controller
 {
@@ -45,4 +46,9 @@ class PegawaiController extends Controller
         // return $options;
         return view('form',compact('questions','options'));
     }
+    
+    public function riwayatTest(){
+        $user = User::find(Auth::user()->id)->quiz_grade()->get();
+        return view("riwayat", ["user"=>$user]);
+     }
 }
