@@ -169,7 +169,8 @@ input:focus ~ .highlight {
                 <div class="card-header justify-content-center" style="background-color: transparent;"><h2 style="color: #0E9C4A;">MASUK</h2></div>
               </center>
                 <div class="card-body">
-                  <form method="POST" action="#" class="needs-validation" novalidate="">
+                  <form method="POST" action="{{url('login')}}" class="needs-validation" novalidate="">
+                    @csrf
                     <div class="group">
                       <input type="email" name="email" required>
                       <span class="highlight"></span>
