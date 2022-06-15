@@ -9,7 +9,7 @@
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 <!-- CSS Libraries -->
-<link rel="stylesheet" href="{{ asset('Stisla/node_modules/bootstrap-daterangepicker/daterangepicker.css') }}">
+{{-- <link rel="stylesheet" href="{{ asset('Stisla/node_modules/bootstrap-daterangepicker/daterangepicker.css') }}">
 <link rel="stylesheet" href="{{ asset('Stisla/node_modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css') }}">
 <link rel="stylesheet" href="{{ asset('Stisla/node_modules/select2/dist/css/select2.min.css') }}">
 <link rel="stylesheet" href="{{ asset('Stisla/node_modules/selectric/public/selectric.css') }}">
@@ -20,8 +20,7 @@
 <link rel="stylesheet" href="{{ asset('Stisla/node_modules/summernote/dist/summernote-bs4.css') }}">
 <link rel="stylesheet" href="{{ asset('Stisla/node_modules/bootstrap-social/bootstrap-social.css') }}">
 <link rel="stylesheet" href="{{ asset('Stisla/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
-<link rel="stylesheet" href="{{ asset('Stisla/node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
-
+<link rel="stylesheet" href="{{ asset('Stisla/node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}"> --}}
 <!-- Template CSS -->
-<link rel="stylesheet" href="{{ asset('Stisla/assets/css/style.css') }}">
-<link rel="stylesheet" href="{{ asset('Stisla/assets/css/components.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
