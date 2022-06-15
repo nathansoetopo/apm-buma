@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-
+    <title>Riwayat Quiz</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
@@ -21,77 +21,72 @@
 
 <body id="page-top">
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav" style="background-color: #12CB60;">
-        <div class="container">
+        <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav" style="background-color: #12CB60;">
+            <div class="container">
             <img class="navbar-brand" src="{{ asset('startboot/logobuma.png') }}" style="width: 10%;" />
-            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
-                data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#portfolio">Beranda</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#about">Riwayat Quiz</a></li>
-                </ul>
+                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Beranda</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">Riwayat Quiz</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-    <!-- Masthead-->
-
-    {{-- <img class="masthead" src="{{ asset('startboot/assets/nilaibg.png') }}" style="position: absolute; width:129%;
-    padding-top:30px"/> --}}
-    <header class="masthead text-white text-center"
-        style="background-image: url('../startboot/assets/hal1.png'); z-index:1;">
-
-        <div class="container d-flex align-items-center flex-column">
-            <!-- Masthead Avatar Image-->
-            <img class="masthead-avatar mb-5" alt="..." />
-            <!-- Masthead Heading-->
-            <h1 class="masthead-heading text-uppercase mb-0">Start Bootstrap</h1>
-            <!-- Icon Divider-->
-            <div class="divider-custom divider-light">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-            </div>
-            <!-- Masthead Subheading-->
-            {{-- <div class="text-center mt-4" style="z-index: 99;">
-                    <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/theme/freelancer/">
-                        Mulai Quiz
-                    </a>
-                </div> --}}
-        </div>
-    </header>
-
-    <section class="page-section portfolio" id="portfolio">
-        <div class="container">
-            <!-- Portfolio Section Heading-->
-            <form action="#" method="POST" enctype="multipart/form-data">
-                @foreach ($questions as $key => $q)
-                <h4>{{ $q->question }}</h4>
-                    @foreach ($options[$key+1] as $o)
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                            value="{{ $o->id }}" name="option{{ $key }}">
-                        <label class="form-check-label" for="exampleRadios1">
-                            {{ $o->option }}
-                        </label>
-                    </div>
-                    @endforeach
-                    <br>
+        </nav>
+    {{-- Content --}}
+    <div class="container riwayat">
+        <h4 class="mb-4">Riwayat Hasil Quiz</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Hari dan Tanggal</th>
+                    <th scope="col">Quiz</th>
+                    <th scope="col">Score</th>
+                    <th scope="col" style="text-align: center;">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($quizzes as $quiz)
+                <tr>
+                    <th scope="row">{{ $quiz->start_date }}</th>
+                    <td>{{ $quiz->name }}</td>
+                    <td>{{ $quiz->pivot->grade }}</td>
+                    <td>
+                        @if ($quiz->pivot->status == 'Unfinished')
+                        <center>
+                            <div class="container indikator bg-danger"><b>{{ $quiz->pivot->status }}</b></div>
+                        </center>
+                        @else
+                        <center>
+                            <div class="container indikator"><b>{{ $quiz->pivot->status }}</b></div>
+                        </center>
+                        @endif
+                    </td>
+                    <td>
+                        <a href="{{ url('quiz/'.$quiz->id.'/show') }}" class="btn btn-outline-info">Kerjakan Quiz</a>
+                    </td>
+                </tr>
                 @endforeach
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-    </section>
-    <!-- About Section-->
-
-    <!-- Contact Section-->
-
+            </tbody>
+        </table>
+        <center>
+            <ul class="pagination justify-content-center mt-5">
+                <li class="{{ ($quizzes->currentPage() == 1) ? 'page-item disabled' : 'page-item' }}">
+                <a class="page-link" href="{{ $quizzes->url($quizzes->currentPage()-1) }}" tabindex="-1">Previous</a>
+                </li>
+                @for ($i = 1; $i <= $quizzes->lastPage(); $i++)
+                <li class="{{ ($quizzes->currentPage() == $i) ? 'page-item active' : 'page-item' }}"><a class="page-link" href="{{ $quizzes->url($i) }}">{{ $i }}</a></li>
+                @endfor
+                <li class="{{ ($quizzes->currentPage() == $quizzes->lastPage()) ? 'page-item disabled' : 'page-item' }}">
+                <a class="page-link" href="{{ $quizzes->url($quizzes->currentPage()+1) }}">Next</a>
+                </li>
+            </ul>
+        </center>
+    </div>
     <!-- Footer-->
     <footer class="footer text-center">
         <div class="container">
@@ -99,7 +94,8 @@
                 <!-- Footer Location-->
                 <div class="col-lg-3 mb-5 mb-lg-0">
                     <div class="row">
-                        <img class="rounded mb-5" src="{{ asset('startboot/logobuma.png') }}" alt="..." />
+                        <img class="rounded mb-5" src="{{ asset('startboot/logobuma.png') }}"
+                            alt="..." />
                     </div>
                 </div>
                 <!-- Footer Social Icons-->

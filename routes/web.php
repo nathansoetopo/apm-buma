@@ -53,6 +53,8 @@ Route::middleware('auth')->group(function(){
         Route::get('/riwayat', function () {
             return view('riwayat');
         });
+        Route::get('/riwayat-quiz',[PegawaiController::class,'indexQuiz']);
+        Route::get('/quiz/{quizID}/show',[PegawaiController::class,'showQuiz']);
         Route::get('/hasil', function () {
             return view('hasil');
         });
