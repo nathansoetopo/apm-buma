@@ -40,11 +40,6 @@
                 total = 0;
                 setTimeout(myFunction, timer * 1000);
             }else{
-                console.log('Lebih dari 15');
-                clearInterval(timerVariable)
-                document.getElementById("button").style.visibility = "hidden";
-                timer = Math.floor((Math.random() * 5) + 1);
-                setTimeout(myFunction, timer * 1000);
                 if(click == 20){
                     $.ajax({
                         headers: {
@@ -58,8 +53,18 @@
                         success:function(response)
                         {
                             console.log(response);
+                            window.open("/");
                         }
                     })
+                }else if(click < 20){
+                    console.log('Lebih dari 15');
+                    clearInterval(timerVariable)
+                    document.getElementById("button").style.visibility = "hidden";
+                    timer = Math.floor((Math.random() * 5) + 1);
+                    setTimeout(myFunction, timer * 1000);
+                }else if(click > 20){
+                    document.getElementById("button").style.visibility = "hidden";
+                    alert('Selesai APM');
                 }
             }
         }
@@ -73,7 +78,7 @@
             } else if (click >= 6 && click <= 15) {
                 showButton()
                 responUser()
-            } else {
+            } else{
                 showButton()
             }
         }
