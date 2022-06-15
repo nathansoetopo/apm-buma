@@ -45,7 +45,7 @@ class User extends Authenticatable
 
     public function quiz_grade()
     {
-        return $this->belongsToMany(Quiz::class, 'quiz_users', 'user_id', 'quiz_id')->withPivot('grade', 'status', 'start_time', 'time_remaining')->withTimestamps();
+        return $this->belongsToMany(Quiz::class, 'quiz_users', 'user_id', 'quiz_id')->withPivot('grade', 'status', 'start_time')->withTimestamps();
     }
 
     public function quiz_answer()

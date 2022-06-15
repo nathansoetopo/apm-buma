@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\QuestionOption;
 use App\Models\Quiz;
 use App\Models\QuizQuestion;
 use Illuminate\Http\Request;
+use App\Models\QuestionOption;
 use Illuminate\Support\Facades\Validator;
 
 class QuizController extends Controller
