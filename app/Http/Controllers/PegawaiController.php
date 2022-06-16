@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\QuestionOption;
 use App\Models\Quiz;
+use App\Models\User;
 use App\Models\QuizQuestion;
 use Illuminate\Http\Request;
+use App\Models\QuestionOption;
 use Illuminate\Support\Facades\Auth;
 
 class PegawaiController extends Controller
@@ -18,37 +19,35 @@ class PegawaiController extends Controller
     public function indexQuiz()
     {
         $user = request()->user();
-        $quizzes = $user->quiz_grade()->where('quizzes.status','Published')->paginate(10);
-        return view('riwayat-quiz',compact('quizzes'));
+        $quizzes = $user->quiz_grade()->where('quizzes.status', 'Published')->paginate(10);
+        return view('riwayat-quiz', compact('quizzes'));
         // $quizzes = Quiz::where('status','Published')->paginate(10);
     }
 
     public function showQuiz($quizID)
     {
         $quiz = Quiz::find($quizID);
-        if(!$quiz)
-        {
-            return redirect()->back()->with('status','Data quiz tidak ditemukan');
+        if (!$quiz) {
+            return redirect()->back()->with('status', 'Data quiz tidak ditemukan');
         }
-        $questions = QuizQuestion::where('quiz_id',$quizID)->get();
+        $questions = QuizQuestion::where('quiz_id', $quizID)->get();
         // $options = array();
-        foreach($questions as $q)
-        {
+        foreach ($questions as $q) {
             // array_push($options,$q->id);
             $options[$q->id] = array();
-            $opt = QuestionOption::where('quiz_question_id',$q->id)->get();
-            foreach($opt as $key => $o)
-            {
+            $opt = QuestionOption::where('quiz_question_id', $q->id)->get();
+            foreach ($opt as $key => $o) {
                 $options[$q->id][] = $o;
             }
         }
-        
+
         // return $options;
-        return view('form',compact('questions','options'));
+        return view('form', compact('questions', 'options'));
     }
-    
-    public function riwayatTest(){
+
+    public function riwayatTest()
+    {
         $user = User::find(Auth::user()->id)->quiz_grade()->get();
-        return view("riwayat", ["user"=>$user]);
-     }
+        return view("riwayat", compact('user'));
+    }
 }

@@ -158,9 +158,9 @@ input:focus ~ .highlight {
     background-color: #0E9C4A;
     z-index: -1; }
 </style>
-<body class="bg-success">
+<body>
   <div class="navbar-bg2" style="background-image: url(../startboot/assets/headerbg.png);"></div>
-    <section class="section" style="padding-top: 10px; background-image: url(../startboot/login-bg.png);">
+    <section class="section" style=" background-image: none;">
         <div class="container mt-5">
           <div class="row">
             <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-8" style="padding-top: 5%;">
