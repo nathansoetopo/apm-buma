@@ -53,7 +53,8 @@
                         success:function(response)
                         {
                             console.log(response);
-                            window.open("/");
+                            
+                            // window.open("/");
                         }
                     })
                 }else if(click < 20){

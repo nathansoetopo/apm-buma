@@ -14,8 +14,6 @@ class PegawaiController extends Controller
 {
     public function index()
     {
-        //return view('index');
-        //$user = User::find(Auth::user()->id)->orderBy('created_at')->first();
         $last = DB::table('quiz_users')->where('user_id', Auth::user()->id)->latest('id')->first();
         return view('index', ['data' => $last]);
     }
@@ -25,7 +23,12 @@ class PegawaiController extends Controller
         $user = request()->user();
         $quizzes = $user->quiz_grade()->where('quizzes.status', 'Published')->paginate(10);
         return view('riwayat-quiz', compact('quizzes'));
-        // $quizzes = Quiz::where('status','Published')->paginate(10);
+    }
+
+    public function showApm(Request $request)
+    {
+        $nilai = $request->get('nilai');
+        
     }
 
     public function showQuiz($quizID)
@@ -51,7 +54,11 @@ class PegawaiController extends Controller
 
     public function riwayatTest()
     {
-        $user = User::find(Auth::user()->id)->quiz_grade()->get();
-        return view("riwayat", compact('user'));
+        $users = User::find(Auth::user()->id)->quiz_grade()->get();
+        // return $users;
+        return view('riwayat', compact('users'));
     }
+    // public function formTest(){
+    //     $users
+    // }
 }
