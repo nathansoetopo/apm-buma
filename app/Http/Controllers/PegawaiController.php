@@ -6,6 +6,7 @@ use App\Models\Quiz;
 use App\Models\User;
 use App\Models\QuizQuestion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\QuestionOption;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +14,10 @@ class PegawaiController extends Controller
 {
     public function index()
     {
-        return view('index');
+        //return view('index');
+        //$user = User::find(Auth::user()->id)->orderBy('created_at')->first();
+        $last = DB::table('quiz_users')->where('user_id', Auth::user()->id)->latest('id')->first();
+        return view('index', ['data' => $last]);
     }
 
     public function indexQuiz()

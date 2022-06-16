@@ -63,8 +63,8 @@
                     <div style="width: 50%;">
                     <div class="card-columns">
                     <div class="card" style="background-image: url('startboot/assets/nilaibg.png'); height:200px;">
-                        <div class="card-body text-center">
-                        <p class="card-text">Some text inside the first card</p>
+                        <div class="card-body text-center" style="padding-top:15%;">
+                            <h2 class="card-text">{{$data->grade}}</h2>
                         </div>
                     </div>
                     </div>
