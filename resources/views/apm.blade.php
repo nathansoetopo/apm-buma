@@ -53,7 +53,7 @@
                         success:function(response)
                         {
                             console.log(response);
-                            
+                            window.location = "/";
                             // window.open("/");
                         }
                     })
@@ -66,7 +66,6 @@
                 }else if(click > 20){
                     document.getElementById("button").style.visibility = "hidden";
                     // alert('Selesai APM');
-                    window.location = "http://127.0.0.1:8000/";
                 }
             }
         }
