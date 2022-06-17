@@ -24,3 +24,4 @@
 <!-- Template CSS -->
 <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
+<script type="text/javascript" src="{{ asset('js/html5-qrcode.min.js') }}"></script>

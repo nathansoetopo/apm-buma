@@ -20,7 +20,10 @@ use App\Http\Controllers\PegawaiController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Testing
+Route::get('/barcode-scanner', function () {
+    return view('scan-barcode');
+});
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'storeLogin']);
 Route::middleware('auth')->group(function () {
@@ -51,10 +54,6 @@ Route::middleware('auth')->group(function () {
     Route::middleware('is.pegawai')->group(function () {
         Route::get('/', [PegawaiController::class, 'index']);
         Route::get('/apm', [ApmController::class, 'index']);
-        // Route::get('/apm', function () {
-        //     return view('apm');
-        // });
-
         // Route::get('/riwayat', [PegawaiController::class, 'riwayatTest']);
         Route::get('/sleep-kuisioner',[PegawaiController::class,'showSleepKuisioner']);
         Route::post('/sleep-kuisioner',[QuizController::class,'storeSleepKuisioner']);
