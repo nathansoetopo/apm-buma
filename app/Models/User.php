@@ -46,6 +46,6 @@ class User extends Authenticatable
 
     public function quiz_answer()
     {
-        return $this->belongsToMany(QuestionOption::class, 'question_option_users', 'user_id', 'option_id')->withPivot('status', 'question_id')->withTimestamps();
+        return $this->belongsToMany(QuestionOption::class, 'question_option_users', 'user_id', 'option_id')->withPivot('question_id')->withTimestamps();
     }
 }

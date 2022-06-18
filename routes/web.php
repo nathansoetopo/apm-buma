@@ -55,6 +55,7 @@ Route::middleware('auth')->group(function () {
         // Route::get('/riwayat', [PegawaiController::class, 'riwayatTest']);
         Route::get('/riwayat-quiz', [PegawaiController::class, 'indexQuiz']);
         Route::get('/quiz/{quizID}/show', [PegawaiController::class, 'showQuiz']);
+        Route::post('/quiz/{quizID}/submit-answer', [QuizController::class, 'submitAnswer']);
         Route::get('/riwayat-test', [PegawaiController::class, 'riwayatTest']);
         Route::get('/hasil', function () {
             return view('hasil');

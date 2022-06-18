@@ -25,13 +25,20 @@
     <section class="page-section portfolio" id="portfolio">
         <div class="container">
             <!-- Portfolio Section Heading-->
-            <form action="#" method="POST" enctype="multipart/form-data">
+            <form action="{{ url('quiz/'.$quizID.'/submit-answer') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <label for="name" class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
+                </div>
                 @foreach ($questions as $key => $q)
                 <h4>{{ $q->question }}</h4>
-                    @foreach ($options[$key+1] as $o)
+                <input type="hidden" name="questions{{ $key }}" value="{{ $q->id }}">
+                <input type="hidden" name="panjang" value="{{ count($questions) }}">
+                    @foreach ($options[$q->id] as $o)
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                            value="{{ $o->id }}" name="option{{ $key }}">
+                        <input class="form-check-input" type="radio" id="exampleRadios1"
+                            value="{{ $o->id }}" name="options{{ $key }}">
                         <label class="form-check-label" for="exampleRadios1">
                             {{ $o->option }}
                         </label>
