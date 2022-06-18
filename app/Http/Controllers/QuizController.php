@@ -220,4 +220,61 @@ class QuizController extends Controller
         QuestionOption::destroy($optionID);
         return redirect()->back()->with('status','Data options berhasil dihapus');
     }
+
+    public function isUserHasTakeTheQuiz($user, $quizID){
+        return $user->quiz_grade()->where('quiz_id', $quizID)->where('quiz_users.status', '===', 'Finished')->exists();
+    }
+    public function saveUserAnswers($user, $answer, $option){
+        $user->quiz_answer()->attach($answer['option_id'], [
+            'status' => $option->status,
+        ]);
+
+        return $user;
+    }
+
+    public function checkUserAnswer($user, $quiz, $answers){
+        $totalTrueAnswer = 0;
+        
+        foreach ($answers as $answer) {
+            $question = $quiz->quiz_questions()->where('id', $answer['question_id'])->first();
+            $option = $question->question_options()->where('id', $answer['option_id'])->first();
+
+            $this->saveUserAnswers($user, $answer, $option);
+
+            $totalTrueAnswer += $option ? (int)$option->status : 0;
+        }
+
+        return $totalTrueAnswer;
+    }
+
+    public function submitAnswer($quizID)
+    {
+        $totalTrueAnswer = 0;
+        $user = request()->user();
+        $quiz = Quiz::find($quizID);
+        if(!$quiz)
+        {
+            return redirect()->back()->with('status','Quiz tidak ditemukan');
+        }
+        if ($this->isUserHasTakeTheQuiz($user, $quizID)) {
+            return redirect()->back()->with('status','Anda tidak tergabung dalam quiz manapun');
+        }
+        // $answers=array();
+        // $questions=array();
+        for($i = 0; $i < request('panjang'); $i++)
+        {
+            // array_push($answers,request('options').$i);
+            // array_push($questions,request('questions').$i);
+            $question = $quiz->quiz_questions()->where('id', request('questions'.$i))->first();
+            // return $question; 
+            $option = $question->question_options()->where('id', request('options'.$i))->first();
+            $user->quiz_answer()->attach(request('options'.$i), [
+                'question_id' => $question->id,
+            ]);
+            $totalTrueAnswer += $option ? (int)$option->status : 0;
+            $user->quiz_grade()->updateExistingPivot($quizID, ['grade' => $totalTrueAnswer, 'status' => 'Finished']);
+        }
+
+        return redirect('/riwayat-quiz')->with('status','Quiz berhasil diselesaikan');
+    }
 }

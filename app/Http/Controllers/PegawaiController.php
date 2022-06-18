@@ -33,9 +33,14 @@ class PegawaiController extends Controller
 
     public function showQuiz($quizID)
     {
+        $user = request()->user();
         $quiz = Quiz::find($quizID);
         if (!$quiz) {
             return redirect()->back()->with('status', 'Data quiz tidak ditemukan');
+        }
+        if($quiz->users()->where('status','Finished')->exists())
+        {
+            return redirect()->back()->with('status', 'Anda sudah mengisi quiz tersebut');
         }
         $questions = QuizQuestion::where('quiz_id', $quizID)->get();
         // $options = array();
@@ -49,7 +54,7 @@ class PegawaiController extends Controller
         }
 
         // return $options;
-        return view('form', compact('questions', 'options'));
+        return view('form', compact('questions', 'options','user','quizID'));
     }
 
     public function riwayatTest()
