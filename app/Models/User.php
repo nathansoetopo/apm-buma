@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(QuestionOption::class, 'question_option_users', 'user_id', 'option_id')->withPivot('question_id')->withTimestamps();
     }
+
+    public function apm()
+    {
+        return $this->hasMany(Apm::class);
+    }
 }

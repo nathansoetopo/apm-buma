@@ -7,6 +7,7 @@ use App\Http\Controllers\QuizController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KepalaController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,8 @@ Route::middleware('auth')->group(function () {
         });
 
         // Route::get('/riwayat', [PegawaiController::class, 'riwayatTest']);
+        Route::get('/sleep-kuisioner',[PegawaiController::class,'showSleepKuisioner']);
+        Route::post('/sleep-kuisioner',[QuizController::class,'storeSleepKuisioner']);
         Route::get('/riwayat-quiz', [PegawaiController::class, 'indexQuiz']);
         Route::get('/quiz/{quizID}/show', [PegawaiController::class, 'showQuiz']);
         Route::post('/quiz/{quizID}/submit-answer', [QuizController::class, 'submitAnswer']);
@@ -64,6 +67,8 @@ Route::middleware('auth')->group(function () {
         //     return view('form');
         // });
         Route::post('uji-coba', [AjaxController::class, 'getValue']);
+        Route::get('/test',[TestController::class,'index']);
+        Route::post('/test',[TestController::class,'update']);
         // Route::get('get-value', [PegawaiController::class, 'showApm']);
     });
 });

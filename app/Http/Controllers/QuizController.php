@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apm;
+use Carbon\Carbon;
 use App\Models\Quiz;
 use App\Models\QuizQuestion;
 use Illuminate\Http\Request;
@@ -276,5 +278,25 @@ class QuizController extends Controller
         }
 
         return redirect('/riwayat-quiz')->with('status','Quiz berhasil diselesaikan');
+    }
+
+    public function storeSleepKuisioner()
+    {
+        $user = request()->user();
+        $validator = Validator::make(request()->all(), [
+            'sleep_start' => 'required|date_format:H:i',
+            'sleep_end' => 'required|date_format:H:i|after:sleep_start',
+        ]);
+        $sleep_start = Carbon::parse(request('sleep_start'));
+        $sleep_end = Carbon::parse(request('sleep_end'));
+        $duration = $sleep_start->diffInMinutes($sleep_end, false);
+        Apm::create([
+            'user_id' => $user->id,
+            'sleep_start' => $sleep_start,
+            'sleep_end' => $sleep_end,
+            'duration' => $duration.' menit',
+            'test_date' => now(),
+        ]);
+        return redirect('/apm');
     }
 }
