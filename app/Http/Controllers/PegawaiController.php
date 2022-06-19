@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apm;
 use App\Models\Quiz;
 use App\Models\User;
 use App\Models\QuizQuestion;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\QuestionOption;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class PegawaiController extends Controller
 {
     public function index()
     {
-        $last = DB::table('quiz_users')->where('user_id', Auth::user()->id)->latest('id')->first();
-        return view('index', ['data' => $last]);
+        // $last = DB::table('quiz_users')->where('user_id', Auth::user()->id)->latest('id')->first();
+        $user = request()->user();
+        $apm = Apm::where('user_id',$user->id)->orderBy('id','desc')->first();
+        return view('index', ['data' => $apm]);
     }
 
     public function indexQuiz()
@@ -63,7 +66,10 @@ class PegawaiController extends Controller
         // return $users;
         return view('riwayat', compact('users'));
     }
-    // public function formTest(){
-    //     $users
-    // }
+    
+    public function showSleepKuisioner()
+    {
+        $user = request()->user();
+        return view('form-tidur',compact('user'));
+    }
 }
