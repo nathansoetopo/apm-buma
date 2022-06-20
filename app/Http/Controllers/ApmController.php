@@ -61,6 +61,6 @@ class ApmController extends Controller
                 return redirect('kepala')->with('status','Tanggal Test sudah kadaluarsa');
             }
         }
-        return $apm;
+        return view('admin.test-result',compact('apm'));
     }
 }
