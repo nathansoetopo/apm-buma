@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Apm;
 use App\Models\Quiz;
 use App\Models\User;
@@ -70,6 +71,11 @@ class PegawaiController extends Controller
     public function showSleepKuisioner()
     {
         $user = request()->user();
+        $now = Carbon::parse(now())->format('Y:m:d');
+        if(Apm::where('user_id',$user->id)->where('test_date',$now)->whereNotNull('points')->orderBy('id','desc')->exists())
+        {
+            return redirect('/')->with('status','User sudah mengisi test hari ini');
+        }
         return view('form-tidur',compact('user'));
     }
 }

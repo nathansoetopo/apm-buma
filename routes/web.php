@@ -1,13 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApmController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KepalaController;
 use App\Http\Controllers\PegawaiController;
-use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,9 +50,10 @@ Route::middleware('auth')->group(function () {
     });
     Route::middleware('is.pegawai')->group(function () {
         Route::get('/', [PegawaiController::class, 'index']);
-        Route::get('/apm', function () {
-            return view('apm');
-        });
+        Route::get('/apm', [ApmController::class, 'index']);
+        // Route::get('/apm', function () {
+        //     return view('apm');
+        // });
 
         // Route::get('/riwayat', [PegawaiController::class, 'riwayatTest']);
         Route::get('/sleep-kuisioner',[PegawaiController::class,'showSleepKuisioner']);
@@ -59,7 +61,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/riwayat-quiz', [PegawaiController::class, 'indexQuiz']);
         Route::get('/quiz/{quizID}/show', [PegawaiController::class, 'showQuiz']);
         Route::post('/quiz/{quizID}/submit-answer', [QuizController::class, 'submitAnswer']);
-        Route::get('/riwayat-test', [PegawaiController::class, 'riwayatTest']);
+        // Route::get('/riwayat-test', [PegawaiController::class, 'riwayatTest']);
+        Route::get('/riwayat-test', [ApmController::class, 'testHistory']);
+        Route::get('/riwayat-test/{apmID}/barcode', [ApmController::class, 'showBarcode']);
         Route::get('/hasil', function () {
             return view('hasil');
         });
@@ -71,4 +75,5 @@ Route::middleware('auth')->group(function () {
         Route::post('/test',[TestController::class,'update']);
         // Route::get('get-value', [PegawaiController::class, 'showApm']);
     });
+    Route::get('/apm-test/scan/{apmID}/detail', [ApmController::class, 'scanBarcode'])->middleware('is.admin');
 });
