@@ -15,6 +15,28 @@
             <!-- Main Content -->
             <div class="main-content">
                 <section class="section">
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                        <div class="alert alert-warning alert-dismissible show fade">
+                            <div class="alert-body">
+                                <button class="close" data-dismiss="alert">
+                                    <span>&times;</span>
+                                </button>
+                                {{ $error }}
+                            </div>
+                        </div>
+                        @endforeach
+                        @endif
+                        @if (session('status'))
+                        <div class="alert alert-info alert-dismissible show fade">
+                            <div class="alert-body">
+                                <button class="close" data-dismiss="alert">
+                                    <span>&times;</span>
+                                </button>
+                                {{ session('status') }}
+                            </div>
+                        </div>
+                        @endif
                     <div class="section-header">
                         <h1>Admin Page</h1>
                     </div>
