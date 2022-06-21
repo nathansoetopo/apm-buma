@@ -39,6 +39,7 @@ class AdminController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'status' => 1,
             'password' => Hash::make($request->password),
         ]);
         $user->assignRole('pegawai');
@@ -66,6 +67,20 @@ class AdminController extends Controller
         return redirect('admin/data-pegawai');
     }
 
+    public function statusPegawai($id){
+        $user = User::where('id', $id)->first();
+        if($user->status == 1){
+            $user->update(
+                ['status' => 0]
+            );
+        }elseif($user->status == 0){
+            $user->update(
+                ['status' => 1]
+            );
+        }
+        return redirect('admin/data-pegawai');
+    }
+
     public function viewKepala(){
         $users = User::role('kepala')->get();
         return view('admin.data-kepala', compact('users'));
@@ -84,6 +99,7 @@ class AdminController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'status' => 1,
             'password' => Hash::make($request->password),
         ]);
         $user->assignRole('kepala');
@@ -108,6 +124,20 @@ class AdminController extends Controller
 
     public function destroyKepala($id){
         User::destroy($id);
+        return redirect('admin/data-kepala');
+    }
+
+    public function statusKepala($id){
+        $user = User::where('id', $id)->first();
+        if($user->status == 1){
+            $user->update(
+                ['status' => 0]
+            );
+        }elseif($user->status == 0){
+            $user->update(
+                ['status' => 1]
+            );
+        }
         return redirect('admin/data-kepala');
     }
 }

@@ -77,14 +77,19 @@
                                                     <td>{{$user->name}}</td>
                                                     <td>{{$user->created_at}}</td>
                                                     <td>
-                                                        <div class="badge badge-success">Active</div>
+                                                        @if ($user->status == 1)
+                                                            <div class="badge badge-success">Active</div>
+                                                        @else
+                                                            <div class="badge badge-danger">Non</div>
+                                                        @endif
                                                     </td>
                                                     <td>
                                                         <button class="btn btn-warning" data-toggle="modal"
                                                             data-target="#edit{{$user->id}}" type="button">Edit</button>
                                                         <a href="#" class="btn btn-danger" data-toggle="modal"
                                                             data-target="#delete{{$user->id}}">Hapus</a>
-                                                        <a href="#" class="btn btn-secondary">Status</a>
+                                                        <a href="#" class="btn btn-secondary" data-toggle="modal"
+                                                            data-target="#non{{$user->id}}">Status</a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -177,6 +182,37 @@
                         <div class="modal-footer bg-whitesmoke br">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-danger">Delete</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+            {{-- Modal Nonaktif --}}
+            <div class="modal fade" tabindex="-1" role="dialog" id="non{{$user->id}}">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <form method="POST" action="{{ url('kepala/status-pegawai/'.$user->id.'')}}">
+                        @csrf
+                        <div class="modal-header">
+                            @if ($user->status == 0)
+                                <h5 class="modal-title">Konfirmasi Aktifkan Pegawai</h5>
+                            @else
+                                <h5 class="modal-title">Konfirmasi Nonaktif Pegawai</h5>
+                            @endif
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            @if ($user->status == 0)
+                                <p>Anda Yakin Akan Aktifkan <b>{{$user->name}}</b>?</p>
+                            @else
+                                <p>Anda Yakin Akan Me-nonaktifkan <b>{{$user->name}}</b>?</p>
+                            @endif
+                        </div>
+                        <div class="modal-footer bg-whitesmoke br">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Simpan</button>
                         </div>
                     </form>
                     </div>

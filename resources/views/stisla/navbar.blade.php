@@ -204,7 +204,9 @@
         </li> --}}
         <li class="dropdown"><a href="#" data-toggle="dropdown"
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                <img alt="image" src="{{ asset('data_user/'.Auth::user()->id.'/profile/'.Auth::user()->profile)}}" class="rounded-circle mr-1">
+                @if (Auth::user()->profile != NULL)
+                    <img alt="image" src="{{ asset('data_user/'.Auth::user()->id.'/profile/'.Auth::user()->profile)}}" class="rounded-circle mr-1">
+                @endif
                 <div class="d-sm-none d-lg-inline-block">Hi, {{ auth()->user()->name }}</div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
