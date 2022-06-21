@@ -65,4 +65,49 @@ class AdminController extends Controller
         User::destroy($id);
         return redirect('admin/data-pegawai');
     }
+
+    public function viewKepala(){
+        $users = User::role('kepala')->get();
+        return view('admin.data-kepala', compact('users'));
+    }
+
+    public function storeKepala(Request $request){
+        $validated = $request->validate([
+            'name' => 'required|unique:users|max:255',
+            'email' => 'required|unique:users',
+            'password' => 'min:8|required_with:password_confirmation|same:password_confirmation',
+            'password_confirmation' => 'required',
+        ]);
+        if(!$validated){
+            return redirect()->back()->withInput()->withError($validated);
+        }
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        $user->assignRole('kepala');
+        return redirect('admin/data-kepala');
+    }
+
+    public function updateKepala(Request $request, $id){
+        $validated = $request->validate([
+            'name' => 'required|unique:users|max:255',
+            'email' => 'required',
+        ]);
+        if(!$validated){
+            return redirect()->back()->withInput()->withError($validated);
+        }
+        User::where('id', $id)
+        ->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+        return redirect('admin/data-kepala');
+    }
+
+    public function destroyKepala($id){
+        User::destroy($id);
+        return redirect('admin/data-kepala');
+    }
 }

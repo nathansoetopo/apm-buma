@@ -38,7 +38,7 @@
                     </div>
                     @endif
                     <div class="section-header">
-                        <h1>Page Tambah Pegawai</h1>
+                        <h1>Page Tambah Kepala</h1>
                     </div>
                     <div class="section-body">
                         <h2 class="section-title">Hi, {{ auth()->user()->name }}</h2>
@@ -125,12 +125,12 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Edit Data Pegawai</h5>
+                            <h5 class="modal-title">Edit Data Kepala</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form method="POST" action="{{url('kepala/update-pegawai/'.$user->id.'')}}">
+                        <form method="POST" action="{{url('admin/update-kepala/'.$user->id.'')}}">
                             @csrf
                             <div class="modal-body">
                                 <div class="row">
@@ -139,12 +139,12 @@
                                             <b>Note!</b> Isi Semua Data
                                         </div>
                                         <div class="form-group">
-                                            <label>Nama Pegawai</label>
+                                            <label>Nama Kepala</label>
                                             <input type="text" class="form-control" value="{{$user->name}}"
                                                 placeholder="Masukkan Nama Lengkap" name="name" required>
                                         </div>
                                         <div class="form-group">
-                                            <label>Email Pegawai</label>
+                                            <label>Email Kepala</label>
                                             <input type="email" class="form-control" value="{{$user->email}}"
                                                 placeholder="Masukkan Email Pegawai" name="email" required>
                                         </div>
@@ -163,10 +163,10 @@
             <div class="modal fade" tabindex="-1" role="dialog" id="delete{{$user->id}}">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                    <form method="POST" action="{{'delete-pegawai/'.$user->id.''}}">
+                    <form method="POST" action="{{'delete-kepala/'.$user->id.''}}">
                         @csrf
                         <div class="modal-header">
-                            <h5 class="modal-title">Konfirmasi Hapus Pegawai</h5>
+                            <h5 class="modal-title">Konfirmasi Hapus Kepala</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -188,12 +188,12 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Tambah Pegawai</h5>
+                            <h5 class="modal-title">Tambah Kepala</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form method="POST" action="{{url('kepala/add-pegawai')}}">
+                        <form method="POST" action="{{url('admin/add-kepala')}}">
                             @csrf
                             <div class="modal-body">
                                 <div class="row">
@@ -202,28 +202,12 @@
                                             <b>Note!</b> Isi Semua Data
                                         </div>
                                         <div class="form-group">
-                                            <label>Nama Pegawai</label>
+                                            <label>Nama Kepala</label>
                                             <input type="text" class="form-control" placeholder="Masukkan Nama Lengkap"
                                                 name="name" required>
                                         </div>
-                                        {{-- <div class="form-group">
-                                <label>D</label>
-                                <select class="form-control">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
-                                </select>
-                                </div> --}}
-                                        {{-- <div class="form-group">
-                                    <label>Textarea</label>
-                                    <textarea class="form-control"></textarea>
-                                </div> --}}
-                                        {{-- <div class="form-group">
-                                    <label>Date</label>
-                                    <input type="date" class="form-control">
-                                </div> --}}
                                         <div class="form-group">
-                                            <label>Email Pegawai</label>
+                                            <label>Email Kepala</label>
                                             <input type="email" class="form-control"
                                                 placeholder="Masukkan Email Pegawai" name="email" required>
                                         </div>
@@ -254,4 +238,5 @@
     </div>
     @include('stisla.script')
 </body>
+
 </html>

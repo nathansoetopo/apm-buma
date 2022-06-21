@@ -39,15 +39,6 @@
                     @endif
                     <div class="section-header">
                         <h1>Page Tambah Pegawai</h1>
-                        @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        @endif
                     </div>
                     <div class="section-body">
                         <h2 class="section-title">Hi, {{ auth()->user()->name }}</h2>

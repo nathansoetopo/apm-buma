@@ -40,6 +40,10 @@ Route::middleware('auth')->group(function () {
             Route::post('/add-pegawai', [AdminController::class, 'storePegawai']);
             Route::post('/update-pegawai/{id}', [AdminController::class, 'updatePegawai']);
             Route::post('/delete-pegawai/{id}', [AdminController::class, 'destroyPegawai']);
+            Route::get('/data-kepala', [AdminController::class, 'viewKepala']);
+            Route::post('/add-kepala', [AdminController::class, 'storeKepala']);
+            Route::post('/update-kepala/{id}', [AdminController::class, 'updateKepala']);
+            Route::post('/delete-kepala/{id}', [AdminController::class, 'destroyKepala']);
             Route::post('/quiz', [QuizController::class, 'storeQuiz']);
             Route::post('/quiz/{quizID}/update', [QuizController::class, 'updateQuiz']);
             Route::get('/quiz/{quizID}/delete', [QuizController::class, 'deleteQuiz']);
