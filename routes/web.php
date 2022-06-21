@@ -9,6 +9,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KepalaController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +22,8 @@ use App\Http\Controllers\PegawaiController;
 |
 */
 // Testing
-// Route::get('/data-pegawai', function () {
-//     return view('admin.data-pegawai');
+// Route::get('/profile', function () {
+//     return view('admin.profile');
 // });
 // Scan
 Route::get('/barcode-scanner', function () {
@@ -30,6 +31,10 @@ Route::get('/barcode-scanner', function () {
 });
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'storeLogin']);
+Route::middleware('auth')->group(function(){
+    Route::get('/profile', [ProfileController::class, 'viewProfileAdmin']);
+    Route::post('/profile', [ProfileController::class, 'storeProfileAdmin']);
+});
 Route::middleware('auth')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::middleware('is.admin')->group(function () {

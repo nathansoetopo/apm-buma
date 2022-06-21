@@ -206,22 +206,6 @@
                                             <input type="text" class="form-control" placeholder="Masukkan Nama Lengkap"
                                                 name="name" required>
                                         </div>
-                                        {{-- <div class="form-group">
-                                <label>D</label>
-                                <select class="form-control">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
-                                </select>
-                                </div> --}}
-                                        {{-- <div class="form-group">
-                                    <label>Textarea</label>
-                                    <textarea class="form-control"></textarea>
-                                </div> --}}
-                                        {{-- <div class="form-group">
-                                    <label>Date</label>
-                                    <input type="date" class="form-control">
-                                </div> --}}
                                         <div class="form-group">
                                             <label>Email Pegawai</label>
                                             <input type="email" class="form-control"
