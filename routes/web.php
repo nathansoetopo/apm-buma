@@ -21,6 +21,10 @@ use App\Http\Controllers\PegawaiController;
 |
 */
 // Testing
+// Route::get('/data-pegawai', function () {
+//     return view('admin.data-pegawai');
+// });
+// Scan
 Route::get('/barcode-scanner', function () {
     return view('scan-barcode');
 });
@@ -32,6 +36,10 @@ Route::middleware('auth')->group(function () {
         Route::prefix('admin')->group(function () {
             Route::get('/', [AdminController::class, 'index']);
             Route::get('/quiz', [AdminController::class, 'indexQuiz']);
+            Route::get('/data-pegawai', [AdminController::class, 'viewPegawai']);
+            Route::post('/add-pegawai', [AdminController::class, 'storePegawai']);
+            Route::post('/update-pegawai/{id}', [AdminController::class, 'updatePegawai']);
+            Route::post('/delete-pegawai/{id}', [AdminController::class, 'destroyPegawai']);
             Route::post('/quiz', [QuizController::class, 'storeQuiz']);
             Route::post('/quiz/{quizID}/update', [QuizController::class, 'updateQuiz']);
             Route::get('/quiz/{quizID}/delete', [QuizController::class, 'deleteQuiz']);
@@ -49,6 +57,10 @@ Route::middleware('auth')->group(function () {
     Route::middleware('is.kepala')->group(function () {
         Route::prefix('kepala')->group(function () {
             Route::get('/', [KepalaController::class, 'index']);
+            Route::get('/data-pegawai', [KepalaController::class, 'viewPegawai']);
+            Route::post('/add-pegawai', [KepalaController::class, 'storePegawai']);
+            Route::post('/update-pegawai/{id}', [KepalaController::class, 'updatePegawai']);
+            Route::post('/delete-pegawai/{id}', [KepalaController::class, 'destroyPegawai']);
         });
     });
     Route::middleware('is.pegawai')->group(function () {
