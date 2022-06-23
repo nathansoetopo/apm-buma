@@ -70,50 +70,55 @@
         </br></br>
         <div class="row justify-content-center">
             <!-- Portfolio Item 1-->
-            <div style="width: 50%;">
+            <div style="width: 100%;">
+                <center>
                 <div class="card-columns">
                     @if (!empty($data))
+                    <br>
                     @if($data->status == 'N')
-                    <div class="card" style="background-image: url('startboot/assets/nilaibg.png'); height:500px;">
-                        <div class="card-body text-center" style="padding-top:15%;">
-                            <h2 class="card-text">{{$data->points}} APM Points</h2>
-                            {!! QrCode::size(250)->generate(env('APP_URL') . '/apm-test/scan/' . $data->id . '/detail'); !!}
-                            <p>Normal</p>
-                        </div>
+                    <div class="card result-card" style="background-image: url('startboot/assets/nilaibg.png');">
+                        <center>
+                            <h2 class="card-text mb-3">{{$data->points}} APM Points</h2>
+                            {!! QrCode::size(200)->generate(env('APP_URL') . '/apm-test/scan/' . $data->id . '/detail'); !!}
+                            <h4 class="mt-4">{{$data->test_date}}</h4>
+                        </center>
                     </div>
                     @elseif($data->status == 'KKR')
-                    <div class="card" style="background-image: url('startboot/assets/nilaibg-kkr.png'); height:500px;">
-                        <div class="card-body text-center" style="padding-top:15%;">
-                            <h2 class="card-text">{{$data->points}} APM Points</h2>
-                            {!! QrCode::size(250)->generate(env('APP_URL') . '/apm-test/scan/' . $data->id . '/detail'); !!}
-                            <p>Kelelahan Kerja Ringan</p>
-                        </div>
+                    <div class="card result-card" style="background-image: url('startboot/assets/nilaibg-kkr.png');">
+                        <center>
+                            <h2 class="card-text mb-3">{{$data->points}} APM Points</h2>
+                            {!! QrCode::size(200)->generate(env('APP_URL') . '/apm-test/scan/' . $data->id . '/detail'); !!}
+                            <h4 class="mt-4">{{$data->test_date}}</h4>
+                        </center>
                     </div>
                     @elseif($data->status == 'KKS')
-                    <div class="card" style="background-image: url('startboot/assets/nilaibg-kks.png'); height:500px;">
-                        <div class="card-body text-center" style="padding-top:15%;">
-                            <h2 class="card-text">{{$data->points}} APM Points</h2>
-                            {!! QrCode::size(250)->generate(env('APP_URL') . '/apm-test/scan/' . $data->id . '/detail'); !!}
-                            <p>Kelelahan Kerja Sedang</p>
-                        </div>
+                    <div class="card result-card" style="background-image: url('startboot/assets/nilaibg-kks.png');">
+                        <center>
+                            <h2 class="card-text mb-3">{{$data->points}} APM Points</h2>
+                            {!! QrCode::size(200)->generate(env('APP_URL') . '/apm-test/scan/' . $data->id . '/detail'); !!}
+                            <h4 class="mt-4">{{$data->test_date}}</h4>
+                        </center>
                     </div>
                     @elseif($data->status == 'KKB')
-                    <div class="card" style="background-image: url('startboot/assets/nilaibg-kkb.png'); height:500px;">
-                        <div class="card-body text-center" style="padding-top:15%;">
-                            <h2 class="card-text">{{$data->points}} APM Points</h2>
-                            {!! QrCode::size(250)->generate(env('APP_URL') . '/apm-test/scan/' . $data->id . '/detail'); !!}
-                            <p>Kelelahan Kerja Berat</p>
-                        </div>
+                    <div class="card result-card" style="background-image: url('startboot/assets/nilaibg-kkb.png');">
+                        <center>
+                            <h2 class="card-text mb-3">{{$data->points}} APM Points</h2>
+                            {!! QrCode::size(200)->generate(env('APP_URL') . '/apm-test/scan/' . $data->id . '/detail'); !!}
+                            <h4 class="mt-4">{{$data->test_date}}</h4>
+                        </center>
                     </div>
                     @endif
                     @else
-                    <div class="card" style="background-image: url('startboot/assets/nilaibg.png'); height:200px;">
-                        <div class="card-body text-center" style="padding-top:15%;">
-                            <h2 class="card-text">Anda belum test</h2>
-                        </div>
+                    <div class="card result-card" style="background-image: url('startboot/assets/nilaibg.png');">
+                        <center>
+                            <h2 class="card-text mb-3">{{$data->points}} APM Points</h2>
+                            {!! QrCode::size(200)->generate(env('APP_URL') . '/apm-test/scan/' . $data->id . '/detail'); !!}
+                            <h4 class="mt-4">{{$data->test_date}}</h4>
+                        </center>
                     </div>
                     @endif
                 </div>
+                </center>
             </div>
         </div>
     </div>
@@ -202,8 +207,8 @@
                     <h4 class="" style="background-color:#FF0000; height:200px">
                         <br>
                         <center>
-                            <p>>= 580,0</p>
-                            <p>mili detik</p>
+                            <p class="text-white">>= 580,0</p>
+                            <p class="text-white">mili detik</p>
                         </center>
                     </h4>
                     <div class="card-body">

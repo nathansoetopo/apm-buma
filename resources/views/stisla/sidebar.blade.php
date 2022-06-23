@@ -9,14 +9,14 @@
       <ul class="sidebar-menu">
         @if (auth()->user()->hasRole('admin'))
           <li class="menu-header">Dashboard</li>
-          <li><a class="nav-link" href="{{url('/')}}"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+          <li><a class="nav-link" href="{{url('admin/')}}"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
           {{-- Scan --}}
           <li><a class="nav-link" href="{{url('barcode-scanner')}}"><i class="fas fa-camera"></i> <span>Scan Barcode</span></a></li>
           <li><a class="nav-link" href="{{url('admin/data-pegawai')}}"><i class="fas fa-user-clock"></i> <span>Daftar Pegawai</span></a></li>
           <li><a class="nav-link" href="{{url('admin/data-kepala')}}"><i class="fas fa-user-cog"></i> <span>Daftar Kepala</span></a></li>
         @elseif (auth()->user()->hasRole('kepala'))
           <li class="menu-header">Dashboard</li>
-          <li><a class="nav-link" href="#"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+          <li><a class="nav-link" href="{{url('kepala/')}}"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
           {{-- Scan --}}
           <li><a class="nav-link" href="{{url('barcode-scanner')}}"><i class="fas fa-camera"></i> <span>Scan Barcode</span></a></li>
           <li><a class="nav-link" href="{{url('kepala/data-pegawai')}}"><i class="fas fa-user-clock"></i> <span>Daftar Pegawai</span></a></li>
