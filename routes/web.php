@@ -98,5 +98,5 @@ Route::middleware('auth')->group(function () {
         Route::post('/test',[TestController::class,'update']);
         // Route::get('get-value', [PegawaiController::class, 'showApm']);
     });
-    Route::get('/apm-test/scan/{apmID}/detail', [ApmController::class, 'scanBarcode'])->middleware('is.admin');
+    Route::get('/apm-test/scan/{apmID}/detail', [ApmController::class, 'scanBarcode']);
 });

@@ -118,7 +118,7 @@
 <section class="page-section portfolio" id="portfolio">
     <div class="container">
         <!-- Portfolio Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Parameter</h2>
         </br></br>
         <!-- Portfolio Grid Items-->
         <div class="row justify-content-center">
@@ -128,6 +128,7 @@
                     <img class="card-img-top">
                     <h4 class="" style="background-color:#33FF00; height:200px">
                         <center>
+                            <br>
                             <b>150,0</b>
                             <p>-</p>
                             <p>240,0</p>
@@ -149,17 +150,18 @@
                 <div class="card">
                     <img class="card-img-top">
                     <h4 class="" style="background-color:#FAFF00; height:200px">
+                        <br>
                         <center>
-                            <b>150,0</b>
+                            <b>240,0</b>
                             <p>-</p>
-                            <p>240,0</p>
+                            <p>410,0</p>
                             <p>mili detik</p>
                         </center>
                     </h4>
                     <div class="card-body">
                         <center>
                             <b>
-                                <p class="card-title">Normal</p>
+                                <p class="card-title">KKR (Kelelahan Kerja Ringan)</p>
                             </b>
                         </center>
 
@@ -171,17 +173,18 @@
                 <div class="card">
                     <img class="card-img-top">
                     <h4 class="" style="background-color:#FFA800; height:200px">
+                    <br>
                         <center>
-                            <b>150,0</b>
+                            <b>410,0</b>
                             <p>-</p>
-                            <p>240,0</p>
+                            <p>580,0</p>
                             <p>mili detik</p>
                         </center>
                     </h4>
                     <div class="card-body">
                         <center>
                             <b>
-                                <p class="card-title">Normal</p>
+                                <p class="card-title">KKS (Kelelahan Kerja Sedang)</p>
                             </b>
                         </center>
 
@@ -193,20 +196,18 @@
                 <div class="card">
                     <img class="card-img-top">
                     <h4 class="" style="background-color:#FF0000; height:200px">
+                        <br>
                         <center>
-                            <b>150,0</b>
-                            <p>-</p>
-                            <p>240,0</p>
+                            <p>>= 580,0</p>
                             <p>mili detik</p>
                         </center>
                     </h4>
                     <div class="card-body">
                         <center>
                             <b>
-                                <p class="card-title">Normal</p>
+                                <p class="card-title">KKB (Kelelahan Kerja Berat)</p>
                             </b>
                         </center>
-
                     </div>
                 </div>
             </div>

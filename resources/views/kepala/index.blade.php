@@ -15,6 +15,28 @@
             <!-- Main Content -->
             <div class="main-content">
                 <section class="section">
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                        <div class="alert alert-warning alert-dismissible show fade">
+                            <div class="alert-body">
+                                <button class="close" data-dismiss="alert">
+                                    <span>&times;</span>
+                                </button>
+                                {{ $error }}
+                            </div>
+                        </div>
+                        @endforeach
+                        @endif
+                        @if (session('status'))
+                        <div class="alert alert-info alert-dismissible show fade">
+                            <div class="alert-body">
+                                <button class="close" data-dismiss="alert">
+                                    <span>&times;</span>
+                                </button>
+                                {{ session('status') }}
+                            </div>
+                        </div>
+                        @endif
                     <div class="section-header">
                         <h1>Kepala Page</h1>
                     </div>
@@ -31,25 +53,10 @@
                                     </div>
                                     <div class="card-wrap">
                                         <div class="card-header">
-                                            <h4>Catalogs</h4>
+                                            <h4>Jumlah Pegawai</h4>
                                         </div>
                                         <div class="card-body">
-                                            1
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                                <div class="card card-statistic-1">
-                                    <div class="card-icon bg-danger">
-                                        <i class="fas fa-users"></i>
-                                    </div>
-                                    <div class="card-wrap">
-                                        <div class="card-header">
-                                            <h4>Clients</h4>
-                                        </div>
-                                        <div class="card-body">
-                                            1
+                                            {{$pegawai}}
                                         </div>
                                     </div>
                                 </div>
@@ -61,55 +68,10 @@
                                     </div>
                                     <div class="card-wrap">
                                         <div class="card-header">
-                                            <h4>Contact Us</h4>
+                                            <h4>Total Test</h4>
                                         </div>
                                         <div class="card-body">
-                                            1
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                                <div class="card card-statistic-1">
-                                    <div class="card-icon bg-success">
-                                        <i class="fas fa-user-friends"></i>
-                                    </div>
-                                    <div class="card-wrap">
-                                        <div class="card-header">
-                                            <h4>Social Media</h4>
-                                        </div>
-                                        <div class="card-body">
-                                            1
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                                <div class="card card-statistic-1">
-                                    <div class="card-icon bg-info">
-                                        <i class="fas fa-laptop-code"></i>
-                                    </div>
-                                    <div class="card-wrap">
-                                        <div class="card-header">
-                                            <h4>Request Demo</h4>
-                                        </div>
-                                        <div class="card-body">
-                                            1
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                                <div class="card card-statistic-1">
-                                    <div class="card-icon bg-secondary">
-                                        <i class="fas fa-file-code"></i>
-                                    </div>
-                                    <div class="card-wrap">
-                                        <div class="card-header">
-                                            <h4>Request Module</h4>
-                                        </div>
-                                        <div class="card-body">
-                                            1
+                                            {{$total_test}}
                                         </div>
                                     </div>
                                 </div>

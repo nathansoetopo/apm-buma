@@ -81,7 +81,7 @@
                                     <form method="POST" action="{{url('profile')}}" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
-                                            <label>Nama Pegawai</label>
+                                            <label>Nama</label>
                                             <input type="text" class="form-control" placeholder="Masukkan Nama Lengkap"
                                                 name="name" value="{{$user->name}}" required>
                                             <input type="file" name="profile" id="image" class="update-foto" style="display:none;">

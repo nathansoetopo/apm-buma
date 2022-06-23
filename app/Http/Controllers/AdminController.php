@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apm;
 use App\Models\Quiz;
 use App\Models\User;
 use Illuminate\Auth\Events\Validated;
@@ -12,7 +13,10 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $pegawai = User::role('pegawai')->get()->count();
+        $kepala = User::role('kepala')->get()->count();
+        $total_test = Apm::all()->count();
+        return view('admin.index', compact('pegawai', 'kepala', 'total_test'));
     }
 
     public function indexQuiz()
