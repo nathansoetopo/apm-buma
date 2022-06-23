@@ -35,7 +35,7 @@
                 <th scope="col">Waktu Test</th>
                 <th scope="col">Mulai Tidur</th>
                 <th scope="col">Bangun Tidur</th>
-                <th scope="col">Durasi Tidur</th>
+                {{-- <th scope="col">Durasi Tidur</th> --}}
                 <th scope="col">Points</th>
                 <th scope="col" style="text-align: center;">Status</th>
                 <th scope="col">Action</th>
@@ -48,7 +48,7 @@
                 <th scope="row">{{ $a->test_time }}</th>
                 <td>{{ $a->sleep_start }}</td>
                 <td>{{ $a->sleep_end }}</td>
-                <td>{{ $a->duration }}</td>
+                {{-- <td>{{ $a->duration }}</td> --}}
                 <td>{{ $a->points }}</td>
                 <td>
                     @if ($a->status == 'N')
