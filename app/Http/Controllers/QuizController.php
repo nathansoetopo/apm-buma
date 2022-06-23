@@ -289,13 +289,15 @@ class QuizController extends Controller
         ]);
         $sleep_start = Carbon::parse(request('sleep_start'));
         $sleep_end = Carbon::parse(request('sleep_end'));
-        $duration = $sleep_start->diffInMinutes($sleep_end, false);
+        $duration = $sleep_end->diffInHours($sleep_start, false);
+        $time = Carbon::parse(now())->format('H:i:s');
         Apm::create([
             'user_id' => $user->id,
             'sleep_start' => $sleep_start,
             'sleep_end' => $sleep_end,
-            'duration' => $duration.' menit',
+            'duration' => $duration.' jam',
             'test_date' => now(),
+            'test_time' => $time,
         ]);
         return redirect('/apm');
     }
