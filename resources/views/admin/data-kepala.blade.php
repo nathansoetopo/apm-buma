@@ -151,7 +151,7 @@
                                         <div class="form-group">
                                             <label>Email Kepala</label>
                                             <input type="email" class="form-control" value="{{$user->email}}"
-                                                placeholder="Masukkan Email Pegawai" name="email" required>
+                                                placeholder="Masukkan Email Pegawai" name="email" required readonly>
                                         </div>
                                     </div>
                                 </div>

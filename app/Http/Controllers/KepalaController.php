@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apm;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -10,7 +11,9 @@ class KepalaController extends Controller
 {
     public function index()
     {
-        return view('kepala.index');
+        $pegawai = User::role('pegawai')->get()->count();
+        $total_test = Apm::all()->count();
+        return view('kepala.index', compact('pegawai', 'total_test'));
     }
 
     public function viewPegawai(){
