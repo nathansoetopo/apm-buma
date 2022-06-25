@@ -37,6 +37,8 @@ Route::middleware('auth')->group(function(){
 });
 Route::middleware('auth')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/search-pegawai', [AjaxController::class, 'getPegawai']);
+    Route::post('/search-kepala', [AjaxController::class, 'getKepala']);
     Route::middleware('is.admin')->group(function () {
         Route::prefix('admin')->group(function () {
             Route::get('/', [AdminController::class, 'index']);
@@ -90,9 +92,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/hasil', function () {
             return view('hasil');
         });
-        // Route::get('/form', function () {
-        //     return view('form');
-        // });
         Route::post('uji-coba', [AjaxController::class, 'getValue']);
         Route::get('/test',[TestController::class,'index']);
         Route::post('/test',[TestController::class,'update']);

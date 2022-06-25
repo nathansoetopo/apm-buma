@@ -48,7 +48,7 @@
     @endif
     <div class="container d-flex align-items-center flex-column" style="position:absolute; top:200px;">
         <!-- Masthead Heading-->
-        <h1 class="masthead-heading text-uppercase mb-0">Start Boot</h1>
+        <h1 class="masthead-heading text-uppercase mb-0">Smart Reaction Test</h1>
         <!-- Icon Divider-->
         <div class="divider-custom divider-light">
             <div class="divider-custom-line"></div>
@@ -109,11 +109,13 @@
                     </div>
                     @endif
                     @else
-                    <div class="card result-card" style="background-image: url('startboot/assets/nilaibg.png');">
+                    <div class="card result-card" style="background-color: #12CB60;">
                         <center>
-                            <h2 class="card-text mb-3">{{$data->points}} APM Points</h2>
-                            {!! QrCode::size(200)->generate(env('APP_URL') . '/apm-test/scan/' . $data->id . '/detail'); !!}
-                            <h4 class="mt-4">{{$data->test_date}}</h4>
+                            <h2 class="card-text mb-3 text-white">Belum Melakukan Test Hari Ini</h2>
+                            <br>
+                            <a class="btn btn-xl btn-outline-light" href="{{ url('/sleep-kuisioner') }}">
+                                <b>Mulai Test</b>
+                            </a>
                         </center>
                     </div>
                     @endif
@@ -132,10 +134,10 @@
         <!-- Portfolio Grid Items-->
         <div class="row justify-content-center">
             <!-- Portfolio Item 1-->
-            <div class="col-md-6 col-lg-2 mb-5">
+            <div class="col-md-6 col-lg-3 col-6 mb-5">
                 <div class="card">
                     <img class="card-img-top">
-                    <h4 class="" style="background-color:#33FF00; height:200px">
+                    <h4 class="" style="background-image: url('startboot/assets/nilaibg.png'); background-size: cover; height:200px;">
                         <center>
                             <br>
                             <b>150,0</b>
@@ -155,10 +157,10 @@
                 </div>
             </div>
             <!-- Portfolio Item 2-->
-            <div class="col-md-6 col-lg-2 mb-5">
+            <div class="col-md-6 col-lg-3 col-6 mb-5">
                 <div class="card">
                     <img class="card-img-top">
-                    <h4 class="" style="background-color:#FAFF00; height:200px">
+                    <h4 class="" style="background-image: url('startboot/assets/nilaibg-kkr.png'); background-size: cover; height:200px">
                         <br>
                         <center>
                             <b>240,0</b>
@@ -178,10 +180,10 @@
                 </div>
             </div>
             <!-- Portfolio Item 3-->
-            <div class="col-md-6 col-lg-2 mb-5">
+            <div class="col-md-6 col-lg-3 col-6 mb-5">
                 <div class="card">
                     <img class="card-img-top">
-                    <h4 class="" style="background-color:#FFA800; height:200px">
+                    <h4 class="" style="background-image: url('startboot/assets/nilaibg-kks.png'); background-size: cover; height:200px">
                         <br>
                         <center>
                             <b>410,0</b>
@@ -201,14 +203,15 @@
                 </div>
             </div>
             <!-- Portfolio Item 4-->
-            <div class="col-md-6 col-lg-2 mb-5">
+            <div class="col-md-6 col-lg-3 col-6 mb-5">
                 <div class="card">
                     <img class="card-img-top">
-                    <h4 class="" style="background-color:#FF0000; height:200px">
+                    <h4 class="" style="background-image: url('startboot/assets/nilaibg-kkb.png'); background-size: cover; height:200px">
                         <br>
                         <center>
-                            <p class="text-white">>= 580,0</p>
-                            <p class="text-white">mili detik</p>
+                            <p class="text-dark">>=</p>
+                            <p class="text-dark">580,0</p>
+                            <p class="text-dark">mili detik</p>
                         </center>
                     </h4>
                     <div class="card-body">

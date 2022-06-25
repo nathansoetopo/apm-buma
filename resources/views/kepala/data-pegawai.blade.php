@@ -56,7 +56,7 @@
                                                 </div>
                                                 <div class="col-md-4 col-6 float-right">
                                                     <input type="text" class="form-control" placeholder="Cari Pegawai"
-                                                        style="width: 100%;">
+                                                        style="width: 100%;" id="pegawaisearch">
                                                 </div>
                                             </div>
                                         </div>
@@ -64,6 +64,7 @@
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <table class="table table-bordered table-md">
+                                            <thead>
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Name</th>
@@ -71,6 +72,8 @@
                                                     <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
+                                            </thead>
+                                            <tbody id="resultpegawai">
                                                 @foreach ($users as $user)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
@@ -93,6 +96,7 @@
                                                     </td>
                                                 </tr>
                                                 @endforeach
+                                            </tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -152,6 +156,11 @@
                                             <label>Email Pegawai</label>
                                             <input type="email" class="form-control" value="{{$user->email}}"
                                                 placeholder="Masukkan Email Pegawai" name="email" readonly required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Nomor Induk Kependudukan</label>
+                                            <input type="number" class="form-control"
+                                            placeholder="Masukkan NIK" value="{{$user->nik}}" name="nik" required>
                                         </div>
                                     </div>
                                 </div>
@@ -242,27 +251,16 @@
                                             <input type="text" class="form-control" placeholder="Masukkan Nama Lengkap"
                                                 name="name" required>
                                         </div>
-                                        {{-- <div class="form-group">
-                                <label>D</label>
-                                <select class="form-control">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
-                                </select>
-                                </div> --}}
-                                        {{-- <div class="form-group">
-                                    <label>Textarea</label>
-                                    <textarea class="form-control"></textarea>
-                                </div> --}}
-                                        {{-- <div class="form-group">
-                                    <label>Date</label>
-                                    <input type="date" class="form-control">
-                                </div> --}}
                                         <div class="form-group">
                                             <label>Email Pegawai</label>
                                             <input type="email" class="form-control"
                                                 placeholder="Masukkan Email Pegawai" name="email" required>
                                         </div>
+                                        <div class="form-group">
+                                            <label>Nomor Induk Kependudukan</label>
+                                            <input type="number" class="form-control"
+                                            placeholder="Masukkan NIK" name="nik" required>
+                                        </div>                                        
                                         <div class="form-group">
                                             <label>Password</label>
                                             <input type="password" class="form-control" name="password" required>
