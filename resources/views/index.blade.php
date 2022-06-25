@@ -7,19 +7,19 @@
 <header class="container masthead text-white text-center"
     style="background-image: url('../startboot/assets/hal1.png'); z-index:1;">
     @if (!empty($data))
-        @if ($data->status == 'N')
-        <img src="{{ asset('startboot/assets/nilaibg.png') }}"
-            style="width:100%; height: auto; max-height:700px; min-height:500px;" />
-        @elseif ($data->status == 'KKR')
-        <img src="{{ asset('startboot/assets/nilaibg-kkr.png') }}"
-            style="width:100%; height: auto; max-height:700px; min-height:500px;" />
-        @elseif($data->status == 'KKS')
-        <img src="{{ asset('startboot/assets/nilaibg-kks.png') }}"
-            style="width:100%; height: auto; max-height:700px; min-height:500px;" />
-        @elseif ($data->status == 'KKB')
-        <img src="{{ asset('startboot/assets/nilaibg-kkb.png') }}"
-            style="width:100%; height: auto; max-height:700px; min-height:500px;" />
-        @endif
+    @if ($data->status == 'N')
+    <img src="{{ asset('startboot/assets/nilaibg.png') }}"
+        style="width:100%; height: auto; max-height:700px; min-height:500px;" />
+    @elseif ($data->status == 'KKR')
+    <img src="{{ asset('startboot/assets/nilaibg-kkr.png') }}"
+        style="width:100%; height: auto; max-height:700px; min-height:500px;" />
+    @elseif($data->status == 'KKS')
+    <img src="{{ asset('startboot/assets/nilaibg-kks.png') }}"
+        style="width:100%; height: auto; max-height:700px; min-height:500px;" />
+    @elseif ($data->status == 'KKB')
+    <img src="{{ asset('startboot/assets/nilaibg-kkb.png') }}"
+        style="width:100%; height: auto; max-height:700px; min-height:500px;" />
+    @endif
     @else
     <img src="{{ asset('startboot/assets/nilaibg.png') }}"
         style="width:100%; height: auto; max-height:700px; min-height:500px;" />
@@ -182,7 +182,7 @@
                 <div class="card">
                     <img class="card-img-top">
                     <h4 class="" style="background-color:#FFA800; height:200px">
-                    <br>
+                        <br>
                         <center>
                             <b>410,0</b>
                             <p>-</p>

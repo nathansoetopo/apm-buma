@@ -28,6 +28,8 @@
     </div>
     @endif
     <h4 class="mb-4">Barcode Hasil Test</h4>
+    <h5 class="mb-4">Nama : {{ $user->name }}</h5>
+    <h5 class="mb-4">NIK : {{ $user->nik }}</h5>
     <center>
         <div class="text-center">
             @if ($apm->status == 'N')
@@ -39,7 +41,7 @@
             @elseif ($apm->status == 'KKB')
             <h5 class="mb-4 text-danger">Kelelahan Kerja Berat</h5>
             @endif
-            <h5 class="mb-4">{{ $apm->points }} APM Points</h5>
+            <h5 class="mb-4">{{ $apm->points }} milidetik</h5>
         </div>
         <div class="text-center">
             {!! QrCode::size(250)->generate(env('APP_URL') . '/apm-test/scan/' . $apm->id . '/detail'); !!}

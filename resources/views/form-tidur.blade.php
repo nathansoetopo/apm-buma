@@ -29,7 +29,11 @@
             @csrf
             <div class="form-group">
                 <label for="name" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
+                <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="name" class="form-label">NIK</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ $user->nik }}" readonly>
             </div>
             <div class="form-group">
                 <label for="appt">Mulai Tidur</label>
