@@ -15,6 +15,12 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{ asset('startboot/css/styles.css') }}" rel="stylesheet" />
+        <style>
+            .result-card{
+                width: fit-content;
+                padding:8%;
+            }
+        </style>
     </head>
     <body id="page-top">
         @include('pegawai.components.navbar')

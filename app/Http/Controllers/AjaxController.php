@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Apm;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -58,5 +59,79 @@ class AjaxController extends Controller
         //     'points' => $output / 10,
         // ]);
         return redirect('/');
+    }
+
+    public function getPegawai(Request $request){
+        $query = $request->get('query');
+        $output = '';
+        $no = 1;
+        if($query != ''){
+            $users = User::role('pegawai')->where('name', 'like', '%'.$query.'%')->get();
+        }else{
+            $users = User::role('pegawai')->get();
+        }
+        foreach($users as $user){
+            if($user->status == 1){
+                $badge = '<div class="badge badge-success">Active</div>';
+            }else{
+                $badge = '<div class="badge badge-danger">Non</div>';
+            }
+            $output .= '
+            <tr>
+                <td>'.$no++.'</td>
+                <td>'.$user->name.'</td>
+                <td>'.$user->created_at.'</td>
+                <td>
+                    '.$badge.'
+                </td>
+                <td>
+                    <button class="btn btn-warning" data-toggle="modal"
+                        data-target="#edit'.$user->id.'" type="button">Edit</button>
+                    <a href="#" class="btn btn-danger" data-toggle="modal"
+                        data-target="#delete'.$user->id.'">Hapus</a>
+                    <a href="#" class="btn btn-secondary" data-toggle="modal"
+                        data-target="#non'.$user->id.'">Status</a>
+                </td>
+            </tr>
+            ';
+        }
+        return $output;
+    }
+
+    public function getKepala(Request $request){
+        $query = $request->get('query');
+        $output = '';
+        $no = 1;
+        if($query != ''){
+            $users = User::role('kepala')->where('name', 'like', '%'.$query.'%')->get();
+        }else{
+            $users = User::role('kepala')->get();
+        }
+        foreach($users as $user){
+            if($user->status == 1){
+                $badge = '<div class="badge badge-success">Active</div>';
+            }else{
+                $badge = '<div class="badge badge-danger">Non</div>';
+            }
+            $output .= '
+            <tr>
+                <td>'.$no++.'</td>
+                <td>'.$user->name.'</td>
+                <td>'.$user->created_at.'</td>
+                <td>
+                    '.$badge.'
+                </td>
+                <td>
+                    <button class="btn btn-warning" data-toggle="modal"
+                        data-target="#edit'.$user->id.'" type="button">Edit</button>
+                    <a href="#" class="btn btn-danger" data-toggle="modal"
+                        data-target="#delete'.$user->id.'">Hapus</a>
+                    <a href="#" class="btn btn-secondary" data-toggle="modal"
+                        data-target="#non'.$user->id.'">Status</a>
+                </td>
+            </tr>
+            ';
+        }
+        return $output;
     }
 }

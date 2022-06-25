@@ -56,7 +56,7 @@
                                                 </div>
                                                 <div class="col-md-4 col-6 float-right">
                                                     <input type="text" class="form-control" placeholder="Cari Pegawai"
-                                                        style="width: 100%;">
+                                                        style="width: 100%;" id="kepalasearch">
                                                 </div>
                                             </div>
                                         </div>
@@ -64,6 +64,7 @@
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <table class="table table-bordered table-md">
+                                            <thead>
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Name</th>
@@ -71,6 +72,8 @@
                                                     <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
+                                            </thead>
+                                            <tbody id="resultkepala">
                                                 @foreach ($users as $user)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
@@ -93,6 +96,7 @@
                                                     </td>
                                                 </tr>
                                                 @endforeach
+                                            </tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -149,6 +153,11 @@
                                                 placeholder="Masukkan Nama Lengkap" name="name" required>
                                         </div>
                                         <div class="form-group">
+                                            <label>Nomor Induk Kependudukan</label>
+                                            <input type="number" class="form-control"
+                                            placeholder="Masukkan NIK" value="{{$user->nik}}" name="nik" required>
+                                        </div>
+                                        <div class="form-group">
                                             <label>Email Kepala</label>
                                             <input type="email" class="form-control" value="{{$user->email}}"
                                                 placeholder="Masukkan Email Pegawai" name="email" required readonly>
@@ -195,9 +204,9 @@
                         @csrf
                         <div class="modal-header">
                             @if ($user->status == 0)
-                                <h5 class="modal-title">Konfirmasi Aktifkan Pegawai</h5>
+                                <h5 class="modal-title">Konfirmasi Aktifkan Kepala</h5>
                             @else
-                                <h5 class="modal-title">Konfirmasi Nonaktif Pegawai</h5>
+                                <h5 class="modal-title">Konfirmasi Nonaktif Kepala</h5>
                             @endif
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -246,6 +255,11 @@
                                             <label>Email Kepala</label>
                                             <input type="email" class="form-control"
                                                 placeholder="Masukkan Email Pegawai" name="email" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Nomor Induk Kependudukan</label>
+                                            <input type="number" class="form-control"
+                                            placeholder="Masukkan NIK" name="nik" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Password</label>

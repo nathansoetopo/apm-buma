@@ -25,6 +25,7 @@ class KepalaController extends Controller
         $validated = $request->validate([
             'name' => 'required|unique:users|max:255',
             'email' => 'required|unique:users',
+            'nik' => 'required|unique:users|max:16|min:16',
             'password' => 'min:8|required_with:password_confirmation|same:password_confirmation',
             'password_confirmation' => 'required',
         ]);
@@ -34,6 +35,7 @@ class KepalaController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'nik' => $request->nik,
             'status' => 1,
             'password' => Hash::make($request->password),
         ]);
@@ -42,10 +44,19 @@ class KepalaController extends Controller
     }
 
     public function updatePegawai(Request $request, $id){
-        $validated = $request->validate([
-            'name' => 'required|unique:users|max:255',
-            'email' => 'required',
-        ]);
+        $data = User::find($id)->nik;
+        if($data == $request->nik){
+            $validated = $request->validate([
+                'name' => 'required|max:255',
+                'email' => 'required',
+            ]);
+        }else{
+            $validated = $request->validate([
+                'name' => 'required|max:255',
+                'email' => 'required',
+                'nik' => 'required|unique:users|min:16|max:16',
+            ]);            
+        }        
         if(!$validated){
             return redirect()->back()->withInput()->withError($validated);
         }
@@ -53,6 +64,7 @@ class KepalaController extends Controller
         ->update([
             'name' => $request->name,
             'email' => $request->email,
+            'nik' =>$request->nik,
         ]);
         return redirect('kepala/data-pegawai');
     }
