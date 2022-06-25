@@ -38,7 +38,7 @@ class ApmController extends Controller
         }
         elseif($apm->test_date == $now)
         {
-            return view('barcode',compact('apm'));
+            return view('barcode',compact('apm','user'));
         }
     }
 

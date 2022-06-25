@@ -19,7 +19,7 @@ class PegawaiController extends Controller
         // $last = DB::table('quiz_users')->where('user_id', Auth::user()->id)->latest('id')->first();
         $user = request()->user();
         $apm = Apm::where('user_id',$user->id)->orderBy('id','desc')->first();
-        return view('index', ['data' => $apm]);
+        return view('index', ['data' => $apm,'user' => $user]);
     }
 
     public function indexQuiz()
