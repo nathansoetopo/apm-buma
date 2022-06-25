@@ -195,9 +195,9 @@
                         @csrf
                         <div class="modal-header">
                             @if ($user->status == 0)
-                                <h5 class="modal-title">Konfirmasi Aktifkan Pegawai</h5>
+                                <h5 class="modal-title">Konfirmasi Aktifkan Kepala</h5>
                             @else
-                                <h5 class="modal-title">Konfirmasi Nonaktif Pegawai</h5>
+                                <h5 class="modal-title">Konfirmasi Nonaktif Kepala</h5>
                             @endif
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
