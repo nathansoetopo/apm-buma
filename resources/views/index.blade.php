@@ -7,19 +7,19 @@
 <header class="container masthead text-white text-center"
     style="background-image: url('../startboot/assets/hal1.png'); z-index:1;">
     @if (!empty($data))
-        @if ($data->status == 'N')
-        <img src="{{ asset('startboot/assets/nilaibg.png') }}"
-            style="width:100%; height: auto; max-height:700px; min-height:500px;" />
-        @elseif ($data->status == 'KKR')
-        <img src="{{ asset('startboot/assets/nilaibg-kkr.png') }}"
-            style="width:100%; height: auto; max-height:700px; min-height:500px;" />
-        @elseif($data->status == 'KKS')
-        <img src="{{ asset('startboot/assets/nilaibg-kks.png') }}"
-            style="width:100%; height: auto; max-height:700px; min-height:500px;" />
-        @elseif ($data->status == 'KKB')
-        <img src="{{ asset('startboot/assets/nilaibg-kkb.png') }}"
-            style="width:100%; height: auto; max-height:700px; min-height:500px;" />
-        @endif
+    @if ($data->status == 'N')
+    <img src="{{ asset('startboot/assets/nilaibg.png') }}"
+        style="width:100%; height: auto; max-height:700px; min-height:500px;" />
+    @elseif ($data->status == 'KKR')
+    <img src="{{ asset('startboot/assets/nilaibg-kkr.png') }}"
+        style="width:100%; height: auto; max-height:700px; min-height:500px;" />
+    @elseif($data->status == 'KKS')
+    <img src="{{ asset('startboot/assets/nilaibg-kks.png') }}"
+        style="width:100%; height: auto; max-height:700px; min-height:500px;" />
+    @elseif ($data->status == 'KKB')
+    <img src="{{ asset('startboot/assets/nilaibg-kkb.png') }}"
+        style="width:100%; height: auto; max-height:700px; min-height:500px;" />
+    @endif
     @else
     <img src="{{ asset('startboot/assets/nilaibg.png') }}"
         style="width:100%; height: auto; max-height:700px; min-height:500px;" />
@@ -76,33 +76,45 @@
                     @if($data->status == 'N')
                     <div class="card" style="background-image: url('startboot/assets/nilaibg.png'); height:500px;">
                         <div class="card-body text-center" style="padding-top:15%;">
-                            <h2 class="card-text">{{$data->points}} APM Points</h2>
-                            {!! QrCode::size(250)->generate(env('APP_URL') . '/apm-test/scan/' . $data->id . '/detail'); !!}
+                            <h2 class="card-text">{{$data->points}} milidetik</h2>
+                            {!! QrCode::size(250)->generate(env('APP_URL') . '/apm-test/scan/' . $data->id . '/detail');
+                            !!}
                             <p>Normal</p>
+                            <p>Nama & NIK: {{ $user->name }} ({{ $user->nik }})</p>
+                            <p>Tanggal dan Waktu Test : {{ $data->test_date }} | {{ $data->test_time }}</p>
                         </div>
                     </div>
                     @elseif($data->status == 'KKR')
                     <div class="card" style="background-image: url('startboot/assets/nilaibg-kkr.png'); height:500px;">
                         <div class="card-body text-center" style="padding-top:15%;">
-                            <h2 class="card-text">{{$data->points}} APM Points</h2>
-                            {!! QrCode::size(250)->generate(env('APP_URL') . '/apm-test/scan/' . $data->id . '/detail'); !!}
+                            <h2 class="card-text">{{$data->points}} milidetik</h2>
+                            {!! QrCode::size(250)->generate(env('APP_URL') . '/apm-test/scan/' . $data->id . '/detail');
+                            !!}
                             <p>Kelelahan Kerja Ringan</p>
+                            <p>Nama & NIK: {{ $user->name }} ({{ $user->nik }})</p>
+                            <p>Tanggal dan Waktu Test : {{ $data->test_date }} | {{ $data->test_time }}</p>
                         </div>
                     </div>
                     @elseif($data->status == 'KKS')
                     <div class="card" style="background-image: url('startboot/assets/nilaibg-kks.png'); height:500px;">
                         <div class="card-body text-center" style="padding-top:15%;">
-                            <h2 class="card-text">{{$data->points}} APM Points</h2>
-                            {!! QrCode::size(250)->generate(env('APP_URL') . '/apm-test/scan/' . $data->id . '/detail'); !!}
+                            <h2 class="card-text">{{$data->points}} milidetik</h2>
+                            {!! QrCode::size(250)->generate(env('APP_URL') . '/apm-test/scan/' . $data->id . '/detail');
+                            !!}
                             <p>Kelelahan Kerja Sedang</p>
+                            <p>Nama & NIK: {{ $user->name }} ({{ $user->nik }})</p>
+                            <p>Tanggal dan Waktu Test : {{ $data->test_date }} | {{ $data->test_time }}</p>
                         </div>
                     </div>
                     @elseif($data->status == 'KKB')
                     <div class="card" style="background-image: url('startboot/assets/nilaibg-kkb.png'); height:500px;">
                         <div class="card-body text-center" style="padding-top:15%;">
-                            <h2 class="card-text">{{$data->points}} APM Points</h2>
-                            {!! QrCode::size(250)->generate(env('APP_URL') . '/apm-test/scan/' . $data->id . '/detail'); !!}
+                            <h2 class="card-text">{{$data->points}} milidetik</h2>
+                            {!! QrCode::size(250)->generate(env('APP_URL') . '/apm-test/scan/' . $data->id . '/detail');
+                            !!}
                             <p>Kelelahan Kerja Berat</p>
+                            <p>Nama & NIK: {{ $user->name }} ({{ $user->nik }})</p>
+                            <p>Tanggal dan Waktu Test : {{ $data->test_date }} | {{ $data->test_time }}</p>>
                         </div>
                     </div>
                     @endif
@@ -177,7 +189,7 @@
                 <div class="card">
                     <img class="card-img-top">
                     <h4 class="" style="background-color:#FFA800; height:200px">
-                    <br>
+                        <br>
                         <center>
                             <b>410,0</b>
                             <p>-</p>

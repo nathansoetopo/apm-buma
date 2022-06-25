@@ -36,7 +36,7 @@
                 <th scope="col">Mulai Tidur</th>
                 <th scope="col">Bangun Tidur</th>
                 <th scope="col">Durasi Tidur</th>
-                <th scope="col">Points</th>
+                <th scope="col">Durasi Test APM</th>
                 <th scope="col" style="text-align: center;">Status</th>
                 <th scope="col">Action</th>
             </tr>
@@ -49,7 +49,7 @@
                 <td>{{ $a->sleep_start }}</td>
                 <td>{{ $a->sleep_end }}</td>
                 <td>{{ $a->duration }}</td>
-                <td>{{ $a->points }}</td>
+                <td>{{ $a->points }} milidetik</td>
                 <td>
                     @if ($a->status == 'N')
                     <center>
