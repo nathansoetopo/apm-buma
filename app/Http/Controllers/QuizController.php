@@ -289,7 +289,7 @@ class QuizController extends Controller
         ]);
         $sleep_start = Carbon::parse(request('sleep_start'));
         $sleep_end = Carbon::parse(request('sleep_end'));
-        $duration = $sleep_end->diffInHours($sleep_start, false);
+        $duration = $sleep_end->diffInHours($sleep_start, true);
         $time = Carbon::parse(now())->format('H:i:s');
         Apm::create([
             'user_id' => $user->id,
