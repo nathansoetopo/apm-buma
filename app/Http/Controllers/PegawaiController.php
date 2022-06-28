@@ -19,7 +19,9 @@ class PegawaiController extends Controller
         // $last = DB::table('quiz_users')->where('user_id', Auth::user()->id)->latest('id')->first();
         $user = request()->user();
         $apm = Apm::where('user_id',$user->id)->orderBy('id','desc')->first();
-        return view('index', ['data' => $apm,'user' => $user]);
+        $now = Carbon::parse(now())->format('Y:m:d');
+        $latest = Carbon::parse($apm->created_at)->format('Y:m:d');
+        return view('index', ['data' => $apm,'user' => $user, 'latest' => $latest, 'now' => $now]);
     }
 
     public function indexQuiz()
@@ -32,7 +34,7 @@ class PegawaiController extends Controller
     public function showApm(Request $request)
     {
         $nilai = $request->get('nilai');
-        
+
     }
 
     public function showQuiz($quizID)
@@ -67,7 +69,7 @@ class PegawaiController extends Controller
         // return $users;
         return view('riwayat', compact('users'));
     }
-    
+
     public function showSleepKuisioner()
     {
         $user = request()->user();

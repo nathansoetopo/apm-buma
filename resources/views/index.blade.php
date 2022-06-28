@@ -57,7 +57,7 @@
         </div>
         <!-- Masthead Subheading-->
         <div class="text-center mt-4" style="z-index: 99;">
-            <a class="btn btn-xl btn-outline-light" href="{{ url('/sleep-kuisioner') }}">
+            <a class="btn btn-warning btn-xl btn-outline-light" href="{{ url('/sleep-kuisioner') }}" style="width: 300px;">
                 Mulai Test
             </a>
         </div>
@@ -73,7 +73,7 @@
             <div style="width: 100%;">
                 <center>
                 <div class="card-columns">
-                    @if (!empty($data))
+                    @if (!empty($data) && $latest == $now)
                     <br>
                     @if($data->status == 'N')
                     <div class="card result-card" style="background-image: url('startboot/assets/nilaibg.png');">
