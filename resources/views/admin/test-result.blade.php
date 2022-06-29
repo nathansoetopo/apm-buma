@@ -88,7 +88,11 @@
                                             <h2>{{ $apm->users->name }}</h2>
                                             <p class="lead">{{ $apm->status }}</p>
                                             <div class="mt-4">
-                                                <a href="#" class="btn btn-outline-white btn-lg btn-icon icon-left">{{ $apm->points }}</a>
+                                                @if ($apm->points == NULL)
+                                                    <a href="#" class="btn btn-outline-white btn-lg btn-icon icon-left">0</a>
+                                                @else
+                                                    <a href="#" class="btn btn-outline-white btn-lg btn-icon icon-left">{{ $apm->points }}</a>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -107,7 +111,7 @@
                                 </div>
                             </div>
                             @endif
-                            
+
                             <!-- This is where your code ends -->
                         </div>
                 </section>

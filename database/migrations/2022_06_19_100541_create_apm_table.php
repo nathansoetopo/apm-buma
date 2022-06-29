@@ -22,7 +22,7 @@ return new class extends Migration
             $table->float('points')->nullable();
             $table->date('test_date');
             $table->time('test_time');
-            $table->enum('status',['N','KKR','KKS','KKB'])->default('N');
+            $table->enum('status',['N','KKR','KKS','KKB'])->default('KKB');
             $table->timestamps();
         });
     }

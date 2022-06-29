@@ -236,7 +236,7 @@ class QuizController extends Controller
 
     public function checkUserAnswer($user, $quiz, $answers){
         $totalTrueAnswer = 0;
-        
+
         foreach ($answers as $answer) {
             $question = $quiz->quiz_questions()->where('id', $answer['question_id'])->first();
             $option = $question->question_options()->where('id', $answer['option_id'])->first();
@@ -268,7 +268,7 @@ class QuizController extends Controller
             // array_push($answers,request('options').$i);
             // array_push($questions,request('questions').$i);
             $question = $quiz->quiz_questions()->where('id', request('questions'.$i))->first();
-            // return $question; 
+            // return $question;
             $option = $question->question_options()->where('id', request('options'.$i))->first();
             $user->quiz_answer()->attach(request('options'.$i), [
                 'question_id' => $question->id,
@@ -298,6 +298,8 @@ class QuizController extends Controller
             'duration' => $duration.' jam',
             'test_date' => now(),
             'test_time' => $time,
+            'created_at' => Carbon::now(),
+            'updated_at' => NULL,
         ]);
         return redirect('/apm');
     }

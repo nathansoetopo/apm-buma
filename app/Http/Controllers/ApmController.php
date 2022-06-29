@@ -12,7 +12,7 @@ class ApmController extends Controller
     {
         $user = request()->user();
         $now = Carbon::parse(now())->format('Y:m:d');
-        if(Apm::where('user_id',$user->id)->where('test_date',$now)->whereNotNull('points')->orderBy('id','desc')->exists())
+        if(Apm::where('user_id',$user->id)->where('test_date',$now)->whereNotNull('updated_at')->orderBy('id','desc')->exists())
         {
             return redirect('/')->with('status','User sudah mengisi test hari ini');
         }
