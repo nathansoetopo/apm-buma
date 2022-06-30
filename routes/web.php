@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::post('/search-pegawai', [AjaxController::class, 'getPegawai']);
     Route::post('/search-kepala', [AjaxController::class, 'getKepala']);
+    Route::post('/update-status-test', [AjaxController::class, 'updateStatusTest']);
     Route::middleware('is.admin')->group(function () {
         Route::prefix('admin')->group(function () {
             Route::get('/', [AdminController::class, 'index']);
