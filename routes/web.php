@@ -22,9 +22,9 @@ use App\Http\Controllers\ProfileController;
 |
 */
 // Testing
-// Route::get('/profile', function () {
-//     return view('admin.profile');
-// });
+Route::get('/shape', function () {
+    return view('test');
+});
 // Scan
 Route::get('/barcode-scanner', function () {
     return view('scan-barcode');
