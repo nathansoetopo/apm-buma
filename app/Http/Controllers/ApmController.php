@@ -16,7 +16,7 @@ class ApmController extends Controller
         {
             return redirect('/')->with('status','User sudah mengisi test hari ini');
         }
-        return view('apm');
+        return view('test');
     }
 
     public function testHistory()
