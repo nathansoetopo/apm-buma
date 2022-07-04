@@ -18,21 +18,21 @@ class UserSeeder extends Seeder
     {
         collect([
             [
-                'nik' => rand(1, 9999999999999999),
+                'nik' => rand(1, 99999999),
                 'name' => 'Admin',
                 'email' => 'admin@test.test',
                 'password' => Hash::make('password'),
                 'status' => 1,
             ],
             [
-                'nik' => rand(1, 9999999999999999),
+                'nik' => rand(1, 99999999),
                 'name' => 'Kepala',
                 'email' => 'kepala@test.test',
                 'password' => Hash::make('password'),
                 'status' => 1,
             ],
             [
-                'nik' => rand(1, 9999999999999999),
+                'nik' => rand(1, 99999999),
                 'name' => 'Pegawai',
                 'email' => 'pegawai@test.test',
                 'password' => Hash::make('password'),
