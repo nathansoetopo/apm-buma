@@ -44,9 +44,11 @@
             <h5 class="mb-4">{{ $apm->points }} milidetik</h5>
         </div>
         <div class="text-center">
-            {!! QrCode::size(250)->generate(env('APP_URL') . '/apm-test/scan/' . $apm->id . '/detail'); !!}
-            <p>Tanggal Test : {{ $apm->test_date }}</p>
-            <p>Waktu Test : {{ $apm->test_time }}</p>
+            {!! QrCode::size(250)->generate(env('APP_URL') . '/apm-test/scan/' . $apm->id . '/detail'); !!} <br><br>
+            <p>Tanggal & waktu test: {{ $apm->test_date }} {{ $apm->test_time }}</p>
+            <p>Durasi Tidur: {{ $apm->duration }}</p>
+            <p>Mulai Tidur: {{ $apm->sleep_start }}</p>
+            <p>Bangun Tidur: {{ $apm->sleep_end }}</p>
         </div>
     </center>
 </div>

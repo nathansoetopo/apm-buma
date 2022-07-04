@@ -34,7 +34,7 @@ class AdminController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|unique:users',
-            'nik' => 'required|unique:users|max:16|min:16',
+            'nik' => 'required|unique:users|max:8|min:8',
             'password' => 'min:8|required_with:password_confirmation|same:password_confirmation',
             'password_confirmation' => 'required',
         ]);
@@ -63,7 +63,7 @@ class AdminController extends Controller
             $validated = $request->validate([
                 'name' => 'required|max:255',
                 'email' => 'required',
-                'nik' => 'required|unique:users|min:16|max:16',
+                'nik' => 'required|unique:users|min:8|max:8',
             ]);            
         }
         if(!$validated){
@@ -106,7 +106,7 @@ class AdminController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|unique:users',
-            'nik' => 'required|unique:users|min:16|max:16',
+            'nik' => 'required|unique:users|min:8|max:8',
             'password' => 'min:8|required_with:password_confirmation|same:password_confirmation',
             'password_confirmation' => 'required',
         ]);
@@ -135,7 +135,7 @@ class AdminController extends Controller
             $validated = $request->validate([
                 'name' => 'required|max:255',
                 'email' => 'required',
-                'nik' => 'required|unique:users|min:16|max:16',
+                'nik' => 'required|unique:users|min:8|max:8',
             ]);            
         }
         if(!$validated){

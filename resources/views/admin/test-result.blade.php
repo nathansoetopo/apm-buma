@@ -49,10 +49,15 @@
                                 <div class="col-12 mb-4">
                                     <div class="hero align-items-center bg-success text-white">
                                         <div class="hero-inner text-center">
-                                            <h2>{{ $apm->users->name }}</h2>
+                                            <h2>Nama: {{ $apm->users->name }}</h2>
+                                            <h2>NIK: {{ $apm->users->nik }}</h2>
                                             <p class="lead">{{ $apm->status }}</p>
                                             <div class="mt-4">
-                                                <a href="#" class="btn btn-outline-white btn-lg btn-icon icon-left">{{ $apm->points }}</a>
+                                                <a href="#" class="btn btn-outline-white btn-lg btn-icon icon-left">{{ $apm->points }} Milidetik</a><br>
+                                                <h6>Durasi Tidur: {{ $apm->duration }}</h6>
+                                                <h6>Jam Tidur: {{ $apm->sleep_start }}</h6>
+                                                <h6>Jam Bangun: {{ $apm->sleep_end }}</h6>
+                                                <h6>Tanggal & waktu test: {{ $apm->test_date }} {{ $apm->test_time }}</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -61,10 +66,15 @@
                                 <div class="col-12 mb-4">
                                     <div class="hero align-items-center bg-secondary text-white">
                                         <div class="hero-inner text-center">
-                                            <h2>{{ $apm->users->name }}</h2>
+                                            <h2>Nama: {{ $apm->users->name }}</h2>
+                                            <h2>NIK: {{ $apm->users->nik }}</h2>
                                             <p class="lead">{{ $apm->status }}</p>
                                             <div class="mt-4">
-                                                <a href="#" class="btn btn-outline-white btn-lg btn-icon icon-left">{{ $apm->points }}</a>
+                                                <a href="#" class="btn btn-outline-white btn-lg btn-icon icon-left">{{ $apm->points }} Milidetik</a><br><br>
+                                                <h6>Durasi Tidur: {{ $apm->duration }}</h6>
+                                                <h6>Jam Tidur: {{ $apm->sleep_start }}</h6>
+                                                <h6>Jam Bangun: {{ $apm->sleep_end }}</h6>
+                                                <h6>Tanggal & waktu test: {{ $apm->test_date }} {{ $apm->test_time }}</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -73,10 +83,15 @@
                                 <div class="col-12 mb-4">
                                     <div class="hero align-items-center bg-warning text-white">
                                         <div class="hero-inner text-center">
-                                            <h2>{{ $apm->users->name }}</h2>
+                                            <h2>Nama: {{ $apm->users->name }}</h2>
+                                            <h2>NIK: {{ $apm->users->nik }}</h2>
                                             <p class="lead">{{ $apm->status }}</p>
                                             <div class="mt-4">
-                                                <a href="#" class="btn btn-outline-white btn-lg btn-icon icon-left">{{ $apm->points }}</a>
+                                                <a href="#" class="btn btn-outline-white btn-lg btn-icon icon-left">{{ $apm->points }} Milidetik</a><br><br>
+                                                <h6>Durasi Tidur: {{ $apm->duration }}</h6>
+                                                <h6>Jam Tidur: {{ $apm->sleep_start }}</h6>
+                                                <h6>Jam Bangun: {{ $apm->sleep_end }}</h6>
+                                                <h6>Tanggal & waktu test: {{ $apm->test_date }} {{ $apm->test_time }}</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -85,14 +100,15 @@
                                 <div class="col-12 mb-4">
                                     <div class="hero align-items-center bg-danger text-white">
                                         <div class="hero-inner text-center">
-                                            <h2>{{ $apm->users->name }}</h2>
+                                            <h2>Nama: {{ $apm->users->name }}</h2>
+                                            <h2>NIK: {{ $apm->users->nik }}</h2>
                                             <p class="lead">{{ $apm->status }}</p>
                                             <div class="mt-4">
-                                                @if ($apm->points == NULL)
-                                                    <a href="#" class="btn btn-outline-white btn-lg btn-icon icon-left">0</a>
-                                                @else
-                                                    <a href="#" class="btn btn-outline-white btn-lg btn-icon icon-left">{{ $apm->points }}</a>
-                                                @endif
+                                                <a href="#" class="btn btn-outline-white btn-lg btn-icon icon-left">{{ $apm->points }} Milidetik</a><br><br>
+                                                <h6>Durasi Tidur: {{ $apm->duration }}</h6>
+                                                <h6>Jam Tidur: {{ $apm->sleep_start }}</h6>
+                                                <h6>Jam Bangun: {{ $apm->sleep_end }}</h6>
+                                                <h6>Tanggal & waktu test: {{ $apm->test_date }} {{ $apm->test_time }}</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -105,7 +121,7 @@
                                         <h2>{{ $apm->users->name }}</h2>
                                         <p class="lead">Belum ada Test</p>
                                         <div class="mt-4">
-                                            <a href="#" class="btn btn-outline-white btn-lg btn-icon icon-left">{{ $apm->points }}</a>
+                                            <a href="#" class="btn btn-outline-white btn-lg btn-icon icon-left">0 Milidetik</a>
                                         </div>
                                     </div>
                                 </div>
