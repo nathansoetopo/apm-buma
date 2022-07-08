@@ -23,7 +23,7 @@ use App\Http\Controllers\ProfileController;
 */
 // Testing
 Route::get('/shape', function () {
-    return view('test');
+    return view('test_new_apm');
 });
 // Scan
 Route::get('/barcode-scanner', function () {
