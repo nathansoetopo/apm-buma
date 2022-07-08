@@ -187,7 +187,7 @@
             </div>
         </center>
     </div>
-    <div class="container bg-success" id="answer" style="height: 400px">
+    <div class="container" id="answer" style="height: 400px">
         <center>
             <h4>Pilih Bentuk</h4>
         </center>
@@ -255,7 +255,7 @@
                 var stylinganswer = document.querySelector('div[data-shape="'+result+'"]');
                 stylinganswer.style.background = color_now;
             }
-            arr = ['kotak','rectangle']
+            arr = ['belahketupat', 'circle2', 'kotak', 'oval', 'rectangle']
             get_random(arr)
         }
         $(document).on('click', '#choice', function(){
