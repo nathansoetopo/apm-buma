@@ -65,48 +65,45 @@
         }
 
         .btn-answer2{
-            top: 50%;
-            left: 50%;
+            top: 60%;
+            left: 0;
             position: absolute;
-            animation: moving1 15s ease-out infinite;
+            animation: moving2 15s ease-out infinite;
         }
 
         .btn-answer3{
-            top: 50%;
-            left: 80%;
+            top: 60%;
+            left: 20%;
             position: absolute;
-            animation: moving1 13s ease-out infinite;
+            animation: moving3 10s ease-out infinite;
         }
 
         .btn-answer4{
             top: 66%;
             left: 70%;
             position: absolute;
-            animation: moving1 20s ease-out infinite;
+            animation: moving2 20s ease-out infinite;
         }
 
         @keyframes moving{
             0%{
-                top: 0;
+                top: 60%;
                 left: 0;
             }
             25%{
-                top: 0;
+                top: 80%;
                 margin-left: 70%;
-                background: cyan;
-                position: relative;
+                position: absolute;
             }
             50%{
                 top: 70%;
                 margin-left: 80%;
-                background: red;
-                position: relative;
+                position: absolute;
             }
             75%{
-                top: 0;
+                top: 80%;
                 margin-left: 10%;
-                background: red;
-                position: relative;
+                position: absolute;
             }
         }
 
@@ -114,24 +111,68 @@
             0%{
                 top: 60%;
                 left: 20%;
-                position: relative;
+                position: absolute;
             }
             25%{
-                top: 0;
+                top: 65%;
                 margin-left: 50%;
-                background: red;
-                position: relative;
+                position: absolute;
             }
             50%{
                 top: 70%;
                 left: 0;
-                background: orange;
-                position: relative;
+                position: absolute;
             }
             75%{
                 top: 60%;
                 left: 20%;
-                position: relative;
+                position: absolute;
+            }
+        }
+
+        @keyframes moving2{
+            0%{
+                top: 50%;
+                left: 0;
+                position: absolute;
+            }
+            25%{
+                top: 60%;
+                margin-left: 30%;
+                position: absolute;
+            }
+            50%{
+                top: 70%;
+                left: 60%;
+                position: absolute;
+            }
+            75%{
+                top: 50%;
+                left: 0;
+                position: absolute;
+            }
+        }
+
+        @keyframes moving3{
+            0%{
+                top: 60%;
+                left: 20%;
+                position: absolute;
+            }
+            25%{
+                top: 65%;
+                left: 50%;
+                position: absolute;
+            }
+            50%{
+                top: 75%;
+                left: 60%;
+                position: absolute;
+            }
+            75%{
+                top: 80%;
+                left: 20%;
+                position: absolute;
             }
         }
     </style>
@@ -165,35 +206,6 @@
         <button class="btn btn-transparent btn-answer4" id="btn-answer4">
             <div class="circle2" id="choice" data-shape="circle2"></div>
         </button>
-        {{-- <div class="row" style="justify-content: center">
-            <div class="col-md-6 col-6">
-                <button class="btn btn-transparent">
-                    <div class="kotak" id="choice" data-shape = 'kotak'></div>
-                </button>
-            </div>
-            <div class="col-md-6 col-6">
-                <button class="btn btn-transparent" style="float: right">
-                    <div class="rectangle" id="choice" data-shape = 'rectangle'></div>
-                </button>
-            </div>
-            <div class="col-md-12 col-12">
-                <center>
-                    <button class="btn btn-transparent">
-                        <div class="oval" id="choice" data-shape="oval"></div>
-                    </button>
-                </center>
-            </div>
-            <div class="col-md-6 col-6">
-                <button class="btn btn-transparent" style="float: left">
-                    <div class="belahketupat" id="choice" data-shape="belahketupat"></div>
-                </button>
-            </div>
-            <div class="col-md-6 col-6">
-                <button class="btn btn-transparent" style="float: right">
-                    <div class="circle2" id="choice" data-shape="circle2"></div>
-                </button>
-            </div>
-        </div> --}}
     </div>
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -208,7 +220,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
     -->
-    {{-- <script>
+    <script>
         $(document).ready(function () {
             $.ajax({
                 headers: {
@@ -218,15 +230,15 @@
                 method: 'POST',
             })
         });
-    </script> --}}
+    </script>
     <script>
         var width = document.body.clientWidth
         var height = document.body.clientHeight
         renderShape();
-        // deployNewPost();
         var result;
         var click = 0;
         var total = 0;
+        var respons = 0;
         const nilai = [];
         var arr;
         var timer;
@@ -243,48 +255,53 @@
                 var stylinganswer = document.querySelector('div[data-shape="'+result+'"]');
                 stylinganswer.style.background = color_now;
             }
-            arr = ['belahketupat', 'circle2', 'kotak', 'oval', 'rectangle']
+            arr = ['kotak','rectangle']
             get_random(arr)
         }
         $(document).on('click', '#choice', function(){
             var choice = $(this).data('shape');
+            console.log(click);
             if(choice == result){
-                click += 1;
-                //deployNewPost();
-                spawnerData();
+                if(respons < 1 && click < 20){
+                    click += 1;
+                    respons += 1;
+                    spawnerData();
+                }else if(click >= 20){
+                    click += 1;
+                    spawnerData();
+                }
             }
+
         });
         function spawnerData() {
             if (click <= 5) {
-                //console.log('Kurang Dari 5');
                 document.getElementById("shaperesult").style.visibility = "hidden";
                 timer = Math.floor((Math.random() * 5) + 1);
                 setTimeout(myFunction, timer * 1000);
             } else if (click >= 6 && click <= 15) {
-                //console.log('Penilaian Jalan');
                 document.getElementById("shaperesult").style.visibility = "hidden";
                 timer = Math.floor((Math.random() * 5) + 1);
                 clearInterval(timerVariable)
-                //nilai.push(total);
+                nilai.push(total);
                 total = 0;
                 setTimeout(myFunction, timer * 1000);
             } else {
                 if (click == 20) {
-                    // $.ajax({
-                    //     headers: {
-                    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    //     },
-                    //     url: "{{ url('/uji-coba') }}",
-                    //     method: 'POST',
-                    //     data: {
-                    //         nilai: JSON.stringify(nilai)
-                    //     },
-                    //     dataType: "json",
-                    //     traditional: true,
-                    //     success: function (response) {
-                    //         console.log(response);
-                    //     }
-                    // })
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: "{{ url('/uji-coba') }}",
+                        method: 'POST',
+                        data: {
+                            nilai: JSON.stringify(nilai)
+                        },
+                        dataType: "json",
+                        traditional: true,
+                        success: function (response) {
+                            console.log(respons);
+                        }
+                    })
                 } else if (click < 20) {
                     clearInterval(timerVariable)
                     document.getElementById("shaperesult").style.visibility = "hidden";
@@ -292,20 +309,21 @@
                     setTimeout(myFunction, timer * 1000);
                 } else if (click > 20) {
                     document.getElementById("shaperesult").style.visibility = "hidden";
-                    //window.location = "/";
+                    window.location = "/";
                 }
             }
         }
 
         function myFunction() {
+            respons = 0;
             if (click <= 5) {
                 renderShape();
-                // if (click == 5) {
-                //     responUser()
-                // }
+                if (click == 5) {
+                    responUser()
+                }
             } else if (click >= 6 && click <= 15) {
                 renderShape();
-                // responUser();
+                responUser();
             } else {
                 renderShape();
             }
@@ -318,23 +336,6 @@
                 ++total;
             }
         }
-
-        // Spawn New Position
-        // timerVariable = setInterval(deployNewPost, 3000);
-        // function deployNewPost(){
-        //     for (let i = 0; i < arr.length; i++) {
-        //         var randPosX = Math.floor(Math.random()*width);
-        //         var randPosY = Math.floor((Math.random()*height));
-        //         var randX = randPosX;
-        //         if(randPosX<=0){
-        //             randX = 0;
-        //         }else{
-        //             randX = randPosX;
-        //         }
-        //         $('#btn-answer'+i).css('left', randX+'px');
-        //         $('#btn-answer'+i).css('top', randPosY+'px');
-        //     }
-        // }
     </script>
 </body>
 
