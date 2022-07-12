@@ -68,6 +68,8 @@ Route::middleware('auth')->group(function () {
             Route::post('/quiz/{optionID}/update-option', [QuizController::class, 'updateOption']);
             Route::get('/quiz/{optionID}/delete-option', [QuizController::class, 'deleteOption']);
             Route::get('/data-lokasi',[LocationController::class,'index']);
+            Route::post('/data-lokasi',[LocationController::class,'storeLocation']);
+            Route::get('/{locationID}/download-barcode',[LocationController::class,'downloadBarcode']);
         });
     });
     Route::middleware('is.kepala')->group(function () {

@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="POST" action="{{url('admin/add-pegawai')}}">
+            <form method="POST" action="{{url('admin/data-lokasi')}}">
                 @csrf
                 <div class="modal-body">
                     <div class="row">
@@ -16,27 +16,19 @@
                                 <b>Note!</b> Isi Semua Data
                             </div>
                             <div class="form-group">
-                                <label>Nama Pegawai</label>
-                                <input type="text" class="form-control" placeholder="Masukkan Nama Lengkap" name="name"
+                                <label>Nama Lokasi</label>
+                                <input type="text" class="form-control" placeholder="Masukkan Nama Lokasi" name="name"
                                     required>
                             </div>
                             <div class="form-group">
-                                <label>Email Pegawai</label>
-                                <input type="email" class="form-control" placeholder="Masukkan Email Pegawai"
-                                    name="email" required>
+                                <label>Latitude</label>
+                                <input type="text" class="form-control" placeholder="Masukkan Data Latitude"
+                                    name="latitude" required>
                             </div>
                             <div class="form-group">
-                                <label>Nomor Induk Kependudukan</label>
-                                <input type="number" class="form-control" placeholder="Masukkan NIK" name="nik"
-                                    required>
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" class="form-control" name="password" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Konfirmasi Password</label>
-                                <input type="password" class="form-control" name="password_confirmation" required>
+                                <label>Longitude</label>
+                                <input type="text" class="form-control" placeholder="Masukkan Data Longitude"
+                                    name="longitude" required>
                             </div>
                         </div>
                     </div>

@@ -53,4 +53,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Apm::class);
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(Location::class,'locations_users','user_id','user_id')->withPivot('range','waktu_scan','status')->withTimestamps();
+    }
 }
