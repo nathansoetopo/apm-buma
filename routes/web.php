@@ -85,22 +85,22 @@ Route::middleware('auth')->group(function () {
     Route::middleware('is.pegawai')->group(function () {
         Route::get('/', [PegawaiController::class, 'index']);
         Route::get('/apm', [ApmController::class, 'index']);
-        // Route::get('/riwayat', [PegawaiController::class, 'riwayatTest']);
         Route::get('/sleep-kuisioner',[PegawaiController::class,'showSleepKuisioner']);
         Route::post('/sleep-kuisioner',[QuizController::class,'storeSleepKuisioner']);
         Route::get('/riwayat-quiz', [PegawaiController::class, 'indexQuiz']);
         Route::get('/quiz/{quizID}/show', [PegawaiController::class, 'showQuiz']);
         Route::post('/quiz/{quizID}/submit-answer', [QuizController::class, 'submitAnswer']);
-        // Route::get('/riwayat-test', [PegawaiController::class, 'riwayatTest']);
         Route::get('/riwayat-test', [ApmController::class, 'testHistory']);
         Route::get('/riwayat-test/{apmID}/barcode', [ApmController::class, 'showBarcode']);
+        Route::get('/test-barcode', function () {
+            return view('scan-pegawai');
+        });
         Route::get('/hasil', function () {
             return view('hasil');
         });
         Route::post('uji-coba', [AjaxController::class, 'getValue']);
         Route::get('/test',[TestController::class,'index']);
         Route::post('/test',[TestController::class,'update']);
-        // Route::get('get-value', [PegawaiController::class, 'showApm']);
         Route::get('/scan-lokasi/{lokasiID}/detail',[PegawaiController::class,'scanLokasiDetail']);
         Route::post('/scan-lokasi/{lokasiID}/submit',[PegawaiController::class,'scanLokasiSubmit']);
     });

@@ -57,7 +57,7 @@
             </div>
             <!-- Masthead Subheading-->
             <div class="text-center mt-4" style="z-index: 99;">
-                <a class="btn btn-warning btn-xl btn-outline-light" href="#"
+                <a class="btn btn-warning btn-xl btn-outline-light" href="{{url('test-barcode')}}"
                     style="width: 300px;">
                     Scan Lokasi
                 </a>
