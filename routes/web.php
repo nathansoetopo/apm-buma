@@ -8,6 +8,7 @@ use App\Http\Controllers\QuizController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KepalaController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\ProfileController;
 
@@ -66,6 +67,7 @@ Route::middleware('auth')->group(function () {
             Route::post('/quiz/{questionID}/store-option', [QuizController::class, 'storeOption']);
             Route::post('/quiz/{optionID}/update-option', [QuizController::class, 'updateOption']);
             Route::get('/quiz/{optionID}/delete-option', [QuizController::class, 'deleteOption']);
+            Route::get('/data-lokasi',[LocationController::class,'index']);
         });
     });
     Route::middleware('is.kepala')->group(function () {
