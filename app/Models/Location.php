@@ -13,6 +13,6 @@ class Location extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class,'locations_users','location_id','user_id')->withPivot('range','waktu_scan','status')->withTimestamps();
+        return $this->belongsToMany(User::class,'location_users','location_id','user_id')->withPivot('range','waktu_scan','status')->withTimestamps();
     }
 }

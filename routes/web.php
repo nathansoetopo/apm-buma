@@ -101,6 +101,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/test',[TestController::class,'index']);
         Route::post('/test',[TestController::class,'update']);
         // Route::get('get-value', [PegawaiController::class, 'showApm']);
+        Route::get('/scan-lokasi/{lokasiID}/detail',[PegawaiController::class,'scanLokasiDetail']);
+        Route::post('/scan-lokasi/{lokasiID}/submit',[PegawaiController::class,'scanLokasiSubmit']);
     });
     Route::get('/apm-test/scan/{apmID}/detail', [ApmController::class, 'scanBarcode']);
 });

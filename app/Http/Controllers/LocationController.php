@@ -58,7 +58,7 @@ class LocationController extends Controller
         // return $hehe;
         QrCode::size(500)
             ->format('svg')
-            ->generate(env('APP_URL') . '/satpam/scan/' . $locationID . '/detail',public_path('QrCode/'.$barcode->name.'-qrcode-'.$locationID.'.svg'));
+            ->generate(env('APP_URL') . 'scan-lokasi/' . $locationID . '/detail',public_path('QrCode/'.$barcode->name.'-qrcode-'.$locationID.'.svg'));
         return response()->download('QrCode/'.$barcode->name.'-qrcode-'.$locationID.'.svg');
         // return $ajg;
         // return 'hehe';
