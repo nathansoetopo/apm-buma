@@ -49,6 +49,10 @@ class ApmController extends Controller
         {
             return redirect('/')->with('status','Anda tidak memiliki wewenang');
         }
+        if(!$user->locations()->where('range','!=',null)->whereDate('waktu_scan',Carbon::today())->exists())
+        {
+            return redirect('/')->with('status','anda belum melakukan scanning lokasi');
+        }
         $apm = Apm::find($apmID);
         $now = Carbon::parse(now())->format('Y-m-d');
         if($apm->test_date != $now)

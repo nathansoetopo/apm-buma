@@ -57,9 +57,9 @@
             </div>
             <!-- Masthead Subheading-->
             <div class="text-center mt-4" style="z-index: 99;">
-                <a class="btn btn-warning btn-xl btn-outline-light" href="{{ url('/sleep-kuisioner') }}"
+                <a class="btn btn-warning btn-xl btn-outline-light" href="#"
                     style="width: 300px;">
-                    Mulai Test
+                    Scan Lokasi
                 </a>
             </div>
         </div>
