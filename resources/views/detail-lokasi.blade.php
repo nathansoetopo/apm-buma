@@ -1,5 +1,5 @@
 @extends('pegawai.master')
-@section('title','Riwayat Quiz')
+@section('title','Lokasi Quiz')
 
 @section('content')
 
@@ -42,9 +42,9 @@
             <label>Nama Lokasi</label>
             <input type="text" class="form-control" value="{{ $lokasi->name }}" readonly>
         </div>
-        <input type="hidden" name="latitude" value="-7.5533">
-        <input type="hidden" name="longitude" value="110.831">
-        {{-- <a href="{{ url('scan-lokasi/'.$lokasi->id.'/submit') }}" class="btn btn-success">Continue</a> --}}
+        <input type="hidden" name="latitude" id="lat" value="0">
+        <input type="hidden" name="longitude" id="long" value="0">
+        <br>
         <button type="submit" class="btn btn-success">Continue</button>
     </form>
 </div>
