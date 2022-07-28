@@ -99,6 +99,10 @@ class PegawaiController extends Controller
             return redirect('/satpam')->with('status','User tidak punya kewenangan');
         }
         $lokasi = Location::find($locationID);
+        if(!$lokasi)
+        {
+            return redirect()->back()->with('status','Lokasi tidak ditemukan');
+        }
         return view('detail-lokasi',compact('user','lokasi'));
     }
 
