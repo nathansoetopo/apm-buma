@@ -284,8 +284,8 @@ class QuizController extends Controller
     {
         $user = request()->user();
         $validator = Validator::make(request()->all(), [
-            'sleep_start' => 'required|date_format:H:i',
-            'sleep_end' => 'required|date_format:H:i|after:sleep_start',
+            'sleep_start' => 'required|date',
+            'sleep_end' => 'required|date|after:sleep_start',
         ]);
         $sleep_start = Carbon::parse(request('sleep_start'));
         $sleep_end = Carbon::parse(request('sleep_end'));
