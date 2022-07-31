@@ -17,18 +17,21 @@
                             </div>
                             <div class="form-group">
                                 <label>Nama Lokasi</label>
-                                <input type="text" class="form-control" placeholder="Masukkan Nama Lokasi" name="name"
+                                <input type="text" class="form-control" id="lokasi" placeholder="Masukkan Nama Lokasi" name="name"
                                     required>
                             </div>
                             <div class="form-group">
                                 <label>Latitude</label>
                                 <input type="text" class="form-control" placeholder="Masukkan Data Latitude"
-                                    name="latitude" required>
+                                    name="latitude" id="lat" required>
                             </div>
                             <div class="form-group">
                                 <label>Longitude</label>
                                 <input type="text" class="form-control" placeholder="Masukkan Data Longitude"
-                                    name="longitude" required>
+                                    name="longitude" id="lng" required>
+                            </div>
+                            <div class="container">
+                                <div id="map" style="width: 100%; height: 300px;"></div>
                             </div>
                         </div>
                     </div>
