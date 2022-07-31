@@ -93,7 +93,9 @@
                                                         <td>
                                                             <div class="btn-group" role="group"
                                                                 aria-label="Basic example">
-                                                                <a class="btn btn-info" href="{{ url('admin/'.$quiz->id.'/download-barcode') }}">Download Barcode</a>
+                                                                <a class="btn btn-info"
+                                                                    href="{{ url('admin/'.$quiz->id.'/download-barcode') }}">Download
+                                                                    Barcode</a>
                                                                 <a href="#" data-toggle="modal"
                                                                     data-target="#modalDeleteData{{ $quiz->id }}">
                                                                     <button type="button"
@@ -119,11 +121,14 @@
                                                 @for ($i = 1; $i <= $locations->lastPage(); $i++)
                                                     <li
                                                         class="{{ ($locations->currentPage() == $i) ? 'page-item active' : 'page-item' }}">
-                                                        <a class="page-link" href="{{ $locations->url($i) }}">{{ $i }}</a>
+                                                        <a class="page-link"
+                                                            href="{{ $locations->url($i) }}">{{ $i }}</a>
                                                     </li>
-                                                @endfor
-                                                    <li class="{{ ($locations->currentPage() == $locations->lastPage()) ? 'page-item disabled' : 'page-item' }}">
-                                                        <a class="page-link" href="{{ $locations->url($locations->currentPage()+1) }}"><i
+                                                    @endfor
+                                                    <li
+                                                        class="{{ ($locations->currentPage() == $locations->lastPage()) ? 'page-item disabled' : 'page-item' }}">
+                                                        <a class="page-link"
+                                                            href="{{ $locations->url($locations->currentPage()+1) }}"><i
                                                                 class="fas fa-chevron-right"></i></a>
                                                     </li>
                                             </ul>
@@ -144,6 +149,37 @@
     </div>
     @include('admin.modal.create-location')
     @include('stisla.script')
+    <script>
+        $('#modalAddData').on('shown.bs.modal', function () {
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(startMap);
+            }
+        });
+
+        function startMap(position) {
+            var map = L.map('map').setView([position.coords.latitude, position.coords.longitude], 13);
+            var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+            marker = new L.marker([position.coords.latitude, position.coords.longitude], {
+                draggable: 'true'
+            });
+            marker.on('dragend', function (event) {
+                var marker = event.target;
+                var position = marker.getLatLng();
+                marker.setLatLng(new L.LatLng(position.lat, position.lng), {
+                    draggable: 'true'
+                });
+                map.
+                panTo(new L.LatLng(position.lat, position.lng))
+                $("#lat").val(position.lat);
+                $("#lng").val(position.lng);
+            });
+            map.addLayer(marker);
+        }
+
+    </script>
 </body>
 
 </html>
