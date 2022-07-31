@@ -137,8 +137,6 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- Test --}}
-                        <!-- This is where your code ends -->
                     </div>
                 </section>
             </div>
@@ -148,6 +146,7 @@
         </div>
     </div>
     @include('admin.modal.create-location')
+    @include('admin.modal.delete-location')
     @include('stisla.script')
     <script>
         $('#modalAddData').on('shown.bs.modal', function () {

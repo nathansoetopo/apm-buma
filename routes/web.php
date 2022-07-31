@@ -69,6 +69,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/quiz/{optionID}/delete-option', [QuizController::class, 'deleteOption']);
             Route::get('/data-lokasi',[LocationController::class,'index']);
             Route::post('/data-lokasi',[LocationController::class,'storeLocation']);
+            Route::post('/delete-lokasi/{id}',[LocationController::class,'deleteLocation']);
             Route::get('/{locationID}/download-barcode',[LocationController::class,'downloadBarcode']);
         });
     });
