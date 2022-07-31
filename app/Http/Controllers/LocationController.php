@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -62,5 +63,10 @@ class LocationController extends Controller
         return response()->download('QrCode/'.$barcode->name.'-qrcode-'.$locationID.'.svg');
         // return $ajg;
         // return 'hehe';
+    }
+
+    public function deleteLocation($id){
+        DB::table('locations')->where('id', $id)->delete();
+        return redirect()->back()->with('status', 'Data lokasi berhasil dihapus');
     }
 }
