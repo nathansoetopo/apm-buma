@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('apm', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->time('sleep_start');
-            $table->time('sleep_end');
+            $table->timestamp('sleep_start');
+            $table->timestamp('sleep_end');
             $table->string('duration')->nullable();
             $table->float('points')->nullable();
             $table->date('test_date');

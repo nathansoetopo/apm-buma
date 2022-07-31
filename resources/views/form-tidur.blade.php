@@ -36,12 +36,12 @@
                 <input type="text" class="form-control" id="name" name="name" value="{{ $user->nik }}" readonly>
             </div>
             <div class="form-group">
-                <label for="appt">Mulai Tidur</label>
-                <input type="time" class="form-control" id="appt" name="sleep_start">
+                <label>Mulai Tidur</label>
+                <input type="datetime-local" id="sleep_start" class="form-control" name="sleep_start">
             </div>
             <div class="form-group">
-                <label for="appt">Bangun Tidur</label>
-                <input type="time" class="form-control" id="appt" name="sleep_end">
+                <label>Date Time Picker</label>
+                <input type="datetime-local" id="sleep_end" class="form-control" name="sleep_end">
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Submit</button>
